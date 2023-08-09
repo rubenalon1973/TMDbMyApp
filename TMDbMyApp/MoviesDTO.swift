@@ -30,6 +30,7 @@ struct MovieDTO: Codable {
     let releaseDate: Date//lo pasaremos de String a formato fecha
     let voteAverage: Double
     let posterPath: String
+    let backdropPath: String
     
     enum CodingKeys: String, CodingKey {
         case id, overview
@@ -37,12 +38,13 @@ struct MovieDTO: Codable {
         case voteAverage = "vote_average"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
     }
 }
 //fx para mapear a nuestro modelo, en Movie en la fx los parámetros son de DTO
 extension MovieDTO {
     func mapToModel() -> Movie {
-        Movie(id: id, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath)
+        Movie(id: id, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath, backdropPath: backdropPath)
     }
 }
 /*

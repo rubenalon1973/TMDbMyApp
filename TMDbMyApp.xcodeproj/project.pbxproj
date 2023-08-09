@@ -24,6 +24,8 @@
 		80D2876F2A82339800675AFB /* MovieRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2876E2A82339800675AFB /* MovieRankView.swift */; };
 		80D287722A823EEC00675AFB /* DateFormattedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D287712A823EEC00675AFB /* DateFormattedExtension.swift */; };
 		80D287742A8252AC00675AFB /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D287732A8252AC00675AFB /* MovieCell.swift */; };
+		80D287762A8377F300675AFB /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D287752A8377F300675AFB /* CustomAlertView.swift */; };
+		80D287782A838DCC00675AFB /* PopularMoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D287772A838DCC00675AFB /* PopularMoviesDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		80D2876E2A82339800675AFB /* MovieRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankView.swift; sourceTree = "<group>"; };
 		80D287712A823EEC00675AFB /* DateFormattedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormattedExtension.swift; sourceTree = "<group>"; };
 		80D287732A8252AC00675AFB /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		80D287752A8377F300675AFB /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		80D287772A838DCC00675AFB /* PopularMoviesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +81,11 @@
 		800BFB1B2A7B8EED003F9AFE /* TMDbMyApp */ = {
 			isa = PBXGroup;
 			children = (
-				80D287702A823ED200675AFB /* Helpers */,
-				80567E8E2A7CE90100A62EC6 /* View Models */,
-				800BFB322A7B9DEC003F9AFE /* Network */,
 				800BFB2D2A7B948F003F9AFE /* Model */,
+				800BFB322A7B9DEC003F9AFE /* Network */,
+				80567E8E2A7CE90100A62EC6 /* View Models */,
 				800BFB2B2A7B9450003F9AFE /* Views */,
+				80D287702A823ED200675AFB /* Helpers */,
 				800BFB2A2A7B9433003F9AFE /* System */,
 				800BFB2C2A7B945C003F9AFE /* Resources */,
 				800BFB222A7B8EEF003F9AFE /* Preview Content */,
@@ -110,8 +114,9 @@
 		800BFB2B2A7B9450003F9AFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				80D2876B2A8230E200675AFB /* Components */,
 				800BFB1E2A7B8EED003F9AFE /* PopularMoviesView.swift */,
+				80D287772A838DCC00675AFB /* PopularMoviesDetailView.swift */,
+				80D2876B2A8230E200675AFB /* Components */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -137,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				800BFB3D2A7BAFBB003F9AFE /* NetworkInterface.swift */,
-				800BFB382A7B9FF4003F9AFE /* NetworkHelpers */,
 				800BFB352A7B9E1F003F9AFE /* Repositories */,
+				800BFB382A7B9FF4003F9AFE /* NetworkHelpers */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				80D2876C2A82310300675AFB /* MoviePosterView.swift */,
 				80D2876E2A82339800675AFB /* MovieRankView.swift */,
 				80D287732A8252AC00675AFB /* MovieCell.swift */,
+				80D287752A8377F300675AFB /* CustomAlertView.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80D287762A8377F300675AFB /* CustomAlertView.swift in Sources */,
 				80D287742A8252AC00675AFB /* MovieCell.swift in Sources */,
 				800BFB1F2A7B8EED003F9AFE /* PopularMoviesView.swift in Sources */,
 				800BFB1D2A7B8EED003F9AFE /* TMDbMyAppApp.swift in Sources */,
@@ -268,6 +275,7 @@
 				800BFB3E2A7BAFBC003F9AFE /* NetworkInterface.swift in Sources */,
 				800BFB2F2A7B94A7003F9AFE /* MoviesDTO.swift in Sources */,
 				800BFB372A7B9E48003F9AFE /* MoviesRepositories.swift in Sources */,
+				80D287782A838DCC00675AFB /* PopularMoviesDetailView.swift in Sources */,
 				80D2876F2A82339800675AFB /* MovieRankView.swift in Sources */,
 				800BFB3C2A7BA6DA003F9AFE /* JSONDecoder.swift in Sources */,
 				80D2876D2A82310300675AFB /* MoviePosterView.swift in Sources */,
