@@ -21,7 +21,7 @@ enum NetworkError: Error {
     case urlRequesNotValid
     case general
     
-    
+//    creamos errores en esta prop calculada con maq de estado
     var description: String {
         switch self {
         case .urlRequesNotValid:

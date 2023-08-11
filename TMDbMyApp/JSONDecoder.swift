@@ -13,7 +13,7 @@ func getJSON<JSON:Codable>(urlRequest: URLRequest, type: JSON.Type) async throws
     let (data, response) = try await URLSession.shared.dataRequest(urlReq: urlRequest)//estamos llamando a la ext de URLSession creada
     
     let decoder = JSONDecoder()
-//    estrategia para decirle como queremos que sean las fechas
+    //    estrategia para decirle como queremos que sean las fechas
     decoder.dateDecodingStrategy = .formatted(.dateFormat)
     
     

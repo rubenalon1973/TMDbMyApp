@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//vista reutilizable customizada
+//MARK: - Vista reutilizable customizada
 struct CustomAlertView: View {
     let title: String
     let message: String

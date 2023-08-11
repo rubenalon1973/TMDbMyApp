@@ -11,7 +11,7 @@ import SwiftUI
 struct TMDbMyAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PopularMoviesView(vm: MoviesVm())
+            PopMoviesView(vm: PopMoviesVm())
         }
     }
 }

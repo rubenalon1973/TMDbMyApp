@@ -9,7 +9,7 @@ import SwiftUI
 
 //MARK: - View para diseño del poster
 struct MoviePosterView: View {
-    let movie: Movie
+    let movie: PopMovie
     var size:CGFloat = 120
     
     var body: some View {

@@ -1,5 +1,5 @@
 //
-//  MoviesVm.swift
+//  PopMoviesVm.swift
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 4/8/23.
@@ -13,16 +13,16 @@ enum MovieListState {
     case error
 }
 
-final class MoviesVm: ObservableObject {
+final class PopMoviesVm: ObservableObject {
 //    para poder decirle de que datos tirar. NO inicializamos y x eso tenmos el init
     let repository: MovieRepositoryProtocol
     var page = 1
     
-    @Published var movies: [Movie] = []
+    @Published var movies: [PopMovie] = []
     @Published var errorMessage = ""
     @Published var isLoading = false//para el loading al iniciar la app
 //    inyección de dependencias, para poder decirle de q repository tirar, por defecto será del real, sino se lo indicamos
-    @Published var moviesListState: MovieListState = .isLoading//para el switch de la vista
+    @Published var moviesListState: MovieListState = .isLoading//para el switch de la vista    
     
     init(repository: MovieRepositoryProtocol = MoviesRepository.shared) { self.repository = repository//posibilidad de cargar de otro, esta es la inicialización, y sino le decimmos nada coge el real y sino le diremos aqui el otro que queramos
         loadMovies()
@@ -45,16 +45,18 @@ final class MoviesVm: ObservableObject {
         }
     }
     //    para comprobar si estamos en el último item, y sumamos una pag(llamamos a la fx de debajo de esta)
-    func loadNextPage(movie: Movie) {
+    func loadNextPage(movie: PopMovie) {
         if isLastItem(movie: movie) {
             page += 1
             loadMovies()
         }
         }
 //    esto busca la última pos de nuestra lista
-    func isLastItem(movie: Movie) -> Bool {
+    func isLastItem(movie: PopMovie) -> Bool {
 //        si utilizamos last sobre array puede q no lo haya por eso ?
         movies.last?.id == movie.id
     }
+    
+    
 
 }
