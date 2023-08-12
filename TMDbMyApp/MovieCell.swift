@@ -13,7 +13,7 @@ struct MovieCell: View {
     
     var body: some View {
         HStack {
-            MoviePosterView(movie: movie)
+            MoviePosterView(movie: movie, size: .poster)
                 .overlay(alignment: .bottomTrailing) {//lo contrario a background, es para poner elementos encima de una vista, en este caso abajo a la drcha
                     MovieRankView(movie: movie)//ponemos el círculo de los votos
                 }

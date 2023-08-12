@@ -9,21 +9,25 @@ import Foundation
 
 final class MovieRepositoryTest: MovieRepositoryProtocol {
     
-    let url = Bundle.main.url(forResource: "MovieTest", withExtension: "json")!
+    let urlMovie = Bundle.main.url(forResource: "MovieTest", withExtension: "json")!
+    let urlMember = Bundle.main.url(forResource: "CastMemberTest", withExtension: "json")!
     
-    
-    func getPopularMovies(page: Int = 1) async throws -> [PopMovie] {
+//    fx para tirar de datos locales de test para PopMovies
+    func getPopMovies(page: Int = 1) async throws -> [PopMovie] {
         //        creamos inst tb aquí para formatear la fecha del modelotest
-        let data = try Data(contentsOf: url)
+        let data = try Data(contentsOf: urlMovie)
         let decoder = JSONDecoder()
         //        estrategia de decode de la fecha para darle formato deseado en preview
         decoder.dateDecodingStrategy = .formatted(.dateFormat)
         
         return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }//con esta fx ext de movieDTO lo pasamos a nuestro mod movie
     }
-    
-    func getMovieCast(id: Int) async throws -> [CastMember] {
-        return []
+    //    fx para tirar de datos locales de test para CastMember en detailVies
+    func getCastMember(id: Int) async throws -> [CastMember] {
+        let data = try Data(contentsOf: urlMember)
+        let decoder = JSONDecoder()
+        
+        return try decoder.decode(CreditResult.self, from: data).cast.map { $0.mapToModel() }
     }
     
 }

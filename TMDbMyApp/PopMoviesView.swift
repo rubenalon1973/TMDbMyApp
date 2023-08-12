@@ -9,7 +9,7 @@ import SwiftUI
 
 //MARK: - View principal de las movies
 struct PopMoviesView: View {
-    @ObservedObject var vm: PopMoviesVm //no instanciamos para poder llamar a los dos sitios
+    @EnvironmentObject var vm: PopMoviesVm //no instanciamos para poder llamar a los dos sitios
     
     var body: some View {
         NavigationStack {
@@ -18,25 +18,20 @@ struct PopMoviesView: View {
             case .isLoading:
                 ProgressView()//florecilla
                     .controlSize(.large)
+//                simplificamos llevando el list en una vista aparte y lo llamamos desde aquí
             case .isLoaded:
-                //el list hace el foreach
-                List(vm.movies) { movie in
-                    NavigationLink(value: movie) {
-                        MovieCell(movie: movie)
-                            .onAppear {//quitamos () para q antes de aparecer en la vista hace la acción dentro de las llaves
-                                vm.loadNextPage(movie: movie)
-                            }
-                    }
+//                viene del enum del vm para poder elegir navegar a la vista list o grid
+                switch vm.moviesStyle {
+                case .listView:
+                    PopMoviesListView()
+                case .gridView:
+                    PopMoviesGridView()
                 }
-                .navigationDestination(for: PopMovie.self, destination: { movie in
-                    MovieDetailView(movie: movie, vm: MovieDetailVm())
-        })
-                .navigationTitle("Popular movies")
             case .error:
                 CustomAlertView(title: "Something went wrong", message: "Cannot load data", buttonText: "Try again") {
                     vm.loadMovies()
                 }
-
+                
             }
             /*
              Esta opción es menos estética en el código:
@@ -61,6 +56,7 @@ struct PopMoviesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PopMoviesView(vm: .preview)
+        PopMoviesView()
+            .environmentObject(PopMoviesVm.preview)
     }
 }

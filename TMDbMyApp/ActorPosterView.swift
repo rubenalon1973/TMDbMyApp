@@ -13,6 +13,7 @@ struct ActorPosterView: View {
     
     var body: some View {
 //        AsyncImage hace el foreach utilizando la fx extensión de URL en capa de config de llamadas
+//        el asyncimage gestiona opcionales y no hace falta unwrapp
         AsyncImage(url: .getprofilePath(actor: actor)) { image in
             image
                 .resizable()

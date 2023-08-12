@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+enum posterSize: CGFloat {
+    case poster = 120
+    case cover = 400
+    case grid = 160
+}
 //MARK: - View para diseño del poster
 struct MoviePosterView: View {
     let movie: PopMovie
-    var size:CGFloat = 120
+    var size: posterSize //= .poster //inicializamos a uno cualquiera
     
     var body: some View {
 //        AsyncImage hace el foreach utilizando la fx extensión de URL en capa de config de llamadas
@@ -18,13 +23,13 @@ struct MoviePosterView: View {
             image
                 .resizable()
                 .scaledToFit()
-                .frame(width: size)
+                .frame(width: size.rawValue)//luego al llamarlo pondremos en la vista q sea el tamaño q queramos
                 .padding()
         } placeholder: {
             Image(systemName: "star")
                 .resizable()
                 .scaledToFit()
-                .frame(width: size)
+                .frame(width: size.rawValue)
                 .padding()
         }
     }
@@ -33,6 +38,6 @@ struct MoviePosterView: View {
 struct MoviePosterView_Previews: PreviewProvider {
     static var previews: some View {
 //        le damos el testMovie a la preview
-        MoviePosterView(movie: .testMovie)
+        MoviePosterView(movie: .testMovie, size: .cover)
     }
 }

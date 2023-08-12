@@ -19,7 +19,7 @@ final class MovieDetailVm: ObservableObject {
     func loadMember(id: Int) {
         Task { @MainActor in
             do {
-                castMember = try await repository.getMovieCast(id: id)
+                castMember = try await repository.getCastMember(id: id)
             } catch {
                 print("error load member")//MARK: QUITAR PRINT
                 castMember = []

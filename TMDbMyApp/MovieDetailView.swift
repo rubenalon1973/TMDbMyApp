@@ -16,7 +16,9 @@ struct MovieDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                MoviePosterView(movie: movie, size: 400)
+                MoviePosterView(movie: movie, size: .cover
+                                
+                )
                     .ignoresSafeArea()//para q ocupe toda la pantalla
                 Link(destination: .getLinkMovies(id: movie.id, title: movie.originalTitle)) {
                     Text("Link Movie")
@@ -26,6 +28,7 @@ struct MovieDetailView: View {
                     LazyHGrid (rows: [GridItem()]){
                         ForEach(vm.castMember) { member in
                             ActorPosterView(actor: member, size: 120)
+//MARK: lo de debajo es sin descomponetizar:
                             //                                            AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/\(member.profilePath ?? "lyUyVARQKhGxaxy0FbPJCQRpiaW")")) { image in
                             //                                                image
                             //                                                    .resizable()
