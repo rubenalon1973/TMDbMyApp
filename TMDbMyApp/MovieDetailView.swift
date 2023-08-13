@@ -9,9 +9,8 @@ import SwiftUI
 
 //MARK: - Vista detalle para las movie
 struct MovieDetailView: View {
-    var movie: PopMovie
-//    var crew: CastCrew
-    @ObservedObject var vm: MovieDetailVm
+    var movie: Movie
+    @EnvironmentObject var vm: MovieDetailVm
     
     var body: some View {
         ScrollView {
@@ -28,24 +27,9 @@ struct MovieDetailView: View {
                     LazyHGrid (rows: [GridItem()]){
                         ForEach(vm.castMember) { member in
                             ActorPosterView(actor: member, size: 120)
-//MARK: lo de debajo es sin descomponetizar:
-                            //                                            AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/\(member.profilePath ?? "lyUyVARQKhGxaxy0FbPJCQRpiaW")")) { image in
-                            //                                                image
-                            //                                                    .resizable()
-                            //                                                    .scaledToFit()
-                            //                                                    .cornerRadius(10)
-                            //                                                    .frame(width: 150, height: 250)
-                            //                                            } placeholder: {
-                            //                                                Image(systemName: "popcorn")
-                            //                                                    .resizable()
-                            //                                                    .scaledToFit()
-                            //                                                    .frame(width: 150, height: 250)
-                            //                                            }
-                            //                                        }
                         }
                         .padding()
                     }
-                    
                     .onAppear(perform: {
                         vm.loadMember(id: movie.id)
                     })
@@ -61,8 +45,12 @@ struct MovieDetailView: View {
     }
 }
 
-struct PopularMoviesDetailView_Previews: PreviewProvider {
+struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(movie: .testMovie, vm: MovieDetailVm())
+        NavigationStack {
+            
+        }
+            .environmentObject(PopMoviesVm.previewMovie)
     }
 }
+

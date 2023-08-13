@@ -20,8 +20,11 @@ struct PopMoviesListView: View {
                     }
             }
         }
-        .navigationDestination(for: PopMovie.self, destination: { movie in
-            MovieDetailView(movie: movie, vm: MovieDetailVm())
+        .task {
+            vm.loadMovies()
+        }
+        .navigationDestination(for: Movie.self, destination: { movie in
+            MovieDetailView(movie: movie)
         })
         .navigationTitle("Popular movies")
         .toolbar {
@@ -41,7 +44,9 @@ struct PopMoviesListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             PopMoviesListView()
-                .environmentObject(PopMoviesVm.preview)
+                .environmentObject(PopMoviesVm.previewMovie)
         }
+        .environmentObject(MovieDetailVm.previewDetail)
     }
 }
+

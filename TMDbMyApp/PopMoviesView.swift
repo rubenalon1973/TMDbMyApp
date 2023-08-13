@@ -15,9 +15,9 @@ struct PopMoviesView: View {
         NavigationStack {
             //el switch es una máquina de estado, que sustituye al if comentado de abajo, queda mejor
             switch vm.moviesListState {
-            case .isLoading:
-                ProgressView()//florecilla
-                    .controlSize(.large)
+//            case .isLoading:
+//                ProgressView()//florecilla
+//                    .controlSize(.large)
 //                simplificamos llevando el list en una vista aparte y lo llamamos desde aquí
             case .isLoaded:
 //                viene del enum del vm para poder elegir navegar a la vista list o grid
@@ -31,7 +31,6 @@ struct PopMoviesView: View {
                 CustomAlertView(title: "Something went wrong", message: "Cannot load data", buttonText: "Try again") {
                     vm.loadMovies()
                 }
-                
             }
             /*
              Esta opción es menos estética en el código:
@@ -48,15 +47,29 @@ struct PopMoviesView: View {
              
              */
         }
+        .overlay {
+            if vm.isLoading {
+                ZStack {
+                    Color.blue
+                    ProgressView()
+                        .controlSize(.large)
+                }
+            }
+        }
         .refreshable {//refresca la view
             vm.loadMovies()
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
+//MARK: MIRAR EL ENVIRONMENT
+struct PopMoviesView_Previews: PreviewProvider {
     static var previews: some View {
         PopMoviesView()
-            .environmentObject(PopMoviesVm.preview)
+            .environmentObject(PopMoviesVm.previewMovie)
+            .environmentObject(MovieDetailVm.previewDetail)
     }
 }
+
+
+
+

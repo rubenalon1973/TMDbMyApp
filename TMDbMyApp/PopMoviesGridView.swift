@@ -39,7 +39,6 @@ struct PopMoviesGridView: View {
                     Image(systemName: "list.star")
                 }
             }
-            
         }
     }
 }
@@ -48,7 +47,8 @@ struct PopMoviesGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             PopMoviesGridView()
-                .environmentObject(PopMoviesVm.preview)
+                .environmentObject(PopMoviesVm.previewMovie)
         }
+        .environmentObject(MovieDetailVm.previewDetail)
     }
 }

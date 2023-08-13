@@ -1,5 +1,5 @@
 //
-//  PopMovie.swift
+//  Movie.swift
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 3/8/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 //mi modelo, para crear campos personalizados q no están en la API
-struct PopMovie: Codable,Identifiable, Hashable {
+struct Movie: Codable,Identifiable, Hashable {
     let id: Int
     let originalTitle: String
     let overview: String

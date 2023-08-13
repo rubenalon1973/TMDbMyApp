@@ -11,28 +11,38 @@ import Foundation
 //MARK: PERSISTENCE = REPOSITORY
 //Creamos un protocolo para alojar la declaración de la fx, q usaremos tanto para cargar los datos en producción como en test
 protocol MovieRepositoryProtocol {
-    func getPopMovies(page: Int) async throws -> [PopMovie]
+    func getPopMovies(page: Int) async throws -> [Movie]
     func getCastMember(id: Int) async throws -> [CastMember]
+    func getNowPlayingMovies(page: Int) async throws -> [Movie] 
 }
 
 final class MoviesRepository: MovieRepositoryProtocol {
     static let shared = MoviesRepository()
     
     private init() {}
-//    llamada a red q nos dev los datos con async, y sino se suelen utilizar los callbacks
-//    en la fx getpopularmovies estamos utilizando la fx de llamada  generica -> getjson, la cual tiene dentro la fx ext de Request | añadimos el page tb en getpopularmovies
-    func getPopMovies(page: Int) async throws -> [PopMovie] {
-        return try await getJSON(urlRequest: .popularMoviesRequest(url: .getPopularMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+    //    llamada a red q nos dev los datos con async, y sino se suelen utilizar los callbacks
+    //    en la fx getpopularmovies estamos utilizando la fx de llamada  generica -> getjson, la cual tiene dentro la fx ext de Request | añadimos el page tb en getpopularmovies
+    func getPopMovies(page: Int) async throws -> [Movie] {
+        print("entra getpopmovies api")
         
-/*  lo de debajo es creando let movies en vez del return y transf con el map llamando a la fx mapToModel de MovieDTO a Movie, pero si lo hacemos directax en las dos líneas de arriba, es más pro y menos cod.
- 
-        let moviesReal = movies.map{ $0.mapToModel() }
-
-        return moviesReal
- */
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getPopMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+        
+        /*  lo de debajo es creando let movies en vez del return y transf con el map llamando a la fx mapToModel de MovieDTO a Movie, pero si lo hacemos directax en las dos líneas de arriba, es más pro y menos cod.
+         
+         let moviesReal = movies.map{ $0.mapToModel() }
+         
+         return moviesReal
+         */
     }
     
     func getCastMember(id: Int) async throws -> [CastMember] {
-        try await getJSON(urlRequest: .movieCastRequest(url: .getMovieCast(id: id)), type: CreditResult.self).cast.map{ $0.mapToModel() }
+        print("entra getcastmember api")
+        
+        return try await getJSON(urlRequest: .movieCastRequest(url: .getMovieCast(id: id)), type: CreditResult.self).cast.map{ $0.mapToModel() }
+    }
+    
+    func getNowPlayingMovies(page: Int) async throws -> [Movie] {
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getPlayingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
+        }
     }
 }

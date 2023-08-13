@@ -32,6 +32,6 @@ struct ActorPosterView: View {
 
 struct CrewPosterView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorPosterView(actor: .testCrew)
+        ActorPosterView(actor: .testMember)
     }
 }

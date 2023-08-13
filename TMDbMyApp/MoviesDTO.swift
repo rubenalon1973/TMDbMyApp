@@ -42,8 +42,8 @@ struct PopMovieDTO: Codable {
 
 //fx para mapear a nuestro modelo, en Movie en la fx los parámetros son de DTO
 extension PopMovieDTO {
-    func mapToModel() -> PopMovie {
-        PopMovie(id: id, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath)
+    func mapToModel() -> Movie {
+        Movie(id: id, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath)
     }
 }
 /*

@@ -18,7 +18,8 @@ var profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h4
 
 //Extensión con el edpoint de lo que necesitamos
 extension URL {
-    static let getPopularMovies = mainURL.appending(path: "movie/popular")//para poner el edpoint a la main
+    static let getPopMovies = mainURL.appending(path: "movie/popular")//para poner el edpoint a la main
+    static let getPlayingMovies = mainURL.appending(path: "movie/now_playing")
     
     static func getPosterPath(poster: String) -> URL {//para poner el edpoint del poster de la image de cada peli donde en la view de diseño del poster
         imageURLBase.appending(path: poster)
@@ -44,7 +45,7 @@ extension URL {
 extension URLRequest {
 //    MARK: PAGINACIÓN
 //    añadimos el page para que empiece en la pag 1 directx, y no la pida
-    static func popularMoviesRequest(url: URL, page: Int = 1) -> URLRequest {
+    static func MoviesRequest(url: URL, page: Int = 1) -> URLRequest {
         var request = URLRequest(url: url)
 //        este request es para la paginación, hemos visto en la api q el edpoint pone page 1, 2, etc...añade &page=1 esto el URLQueryItem(name: "page", value: String(page))])
         request.url?.append(queryItems: [URLQueryItem(name: "page", value: String(page))])

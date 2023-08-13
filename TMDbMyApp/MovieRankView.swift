@@ -15,7 +15,7 @@ enum VoteRankViewSize {
 }
 
 struct MovieRankView: View {
-    let movie: PopMovie
+    let movie: Movie
         var size: VoteRankViewSize = .small
         
         var body: some View {

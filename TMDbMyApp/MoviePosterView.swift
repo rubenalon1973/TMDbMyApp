@@ -14,7 +14,7 @@ enum posterSize: CGFloat {
 }
 //MARK: - View para diseño del poster
 struct MoviePosterView: View {
-    let movie: PopMovie
+    let movie: Movie
     var size: posterSize //= .poster //inicializamos a uno cualquiera
     
     var body: some View {

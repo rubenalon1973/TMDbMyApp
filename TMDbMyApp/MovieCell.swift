@@ -9,7 +9,7 @@ import SwiftUI
 
 //MARK: - View diseño de la cell
 struct MovieCell: View {
-    let movie: PopMovie
+    let movie: Movie
     
     var body: some View {
         HStack {
@@ -27,7 +27,7 @@ struct MovieCell: View {
 }
 
 struct MovieCell_Previews: PreviewProvider {
-    let movie: PopMovie
+    let movie: Movie
     static var previews: some View {
         MovieCell(movie: .testMovie)
     }
