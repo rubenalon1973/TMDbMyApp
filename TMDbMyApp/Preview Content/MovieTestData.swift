@@ -60,11 +60,11 @@ extension MoviesVm {
 }
 
 extension MovieDetailVm {
-    static let previewDetail = MovieDetailVm(repository: MovieRepositoryTest(), selectedMovie: .testMovie)
+    static let previewDetail = MovieDetailVm(repository: MovieRepositoryTest(), selectedMovie: .testMovieDetail)
 }
 
 extension Movie {
-    static let testMovie = Movie(id: 29292,
+    static let testMovieDetail = Movie(id: 29292,
                                  originalTitle: "Transformers: Rise of the Beasts",
                                  overview: "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
                                  releaseDate: DateFormatter.dateFormat.date(from: "2014-11-05")!,

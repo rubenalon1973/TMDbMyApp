@@ -17,8 +17,8 @@ enum MovieListState {
 }
 //para nav a una vista u otra
 enum MoviesViewType {
-    case listView
-    case gridView
+    case list
+    case grid
 }
 
 enum GetMoviesType {
@@ -36,7 +36,7 @@ final class MoviesVm: ObservableObject {
     @Published var isLoading = true//para el loading al iniciar la app
 //    inyección de dependencias, para poder decirle de q repository tirar, por defecto será del real, sino se lo indicamos
     @Published var moviesListState: MovieListState = .isLoaded//para el switch de la vista
-    @Published var viewType: MoviesViewType = .listView
+    @Published var viewType: MoviesViewType = .list
     @Published var moviesType: GetMoviesType = .popular
     
     init(movieType: GetMoviesType = .popular, repository: MovieRepositoryProtocol = MoviesRepository.shared) {

@@ -32,7 +32,7 @@ struct MoviesListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.viewType = .gridView
+                    vm.viewType = .grid
                 } label: {
                     Image(systemName: "squareshape.split.2x2")
                 }

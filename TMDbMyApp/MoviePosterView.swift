@@ -38,6 +38,6 @@ struct MoviePosterView: View {
 struct MoviePosterView_Previews: PreviewProvider {
     static var previews: some View {
 //        le damos el testMovie a la preview
-        MoviePosterView(movie: .testMovie, size: .cover)
+        MoviePosterView(movie: .testMovieDetail, size: .cover)
     }
 }

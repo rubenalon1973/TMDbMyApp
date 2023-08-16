@@ -29,6 +29,6 @@ struct MovieCell: View {
 struct MovieCell_Previews: PreviewProvider {
     let movie: Movie
     static var previews: some View {
-        MovieCell(movie: .testMovie)
+        MovieCell(movie: .testMovieDetail)
     }
 }

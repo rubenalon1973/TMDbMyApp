@@ -13,11 +13,11 @@ struct MoviesHomeView: View {
     
     var body: some View {
         TabView {
-            MoviesView(vm: popVM, type: .popular)
+            MoviesView(vm: popVM)
                 .tabItem {
                     Label("Popular", systemImage: "heart.fill")
                 }
-            MoviesView(vm: nowPlayVM, type: .nowPlay)
+            MoviesView(vm: nowPlayVM)
                 .tabItem {
                     Label("Now Playing", systemImage: "play")
                 }

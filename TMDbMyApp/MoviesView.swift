@@ -1,5 +1,5 @@
 //
-//  PopMoviesView.swift
+//  MoviesView.swift
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 3/8/23.
@@ -10,11 +10,9 @@ import SwiftUI
 //MARK: - View principal de las movies
 struct MoviesView: View {
     @ObservedObject var vm: MoviesVm //no instanciamos para poder llamar a los dos sitios
-    var type: GetMoviesType
     
     var body: some View {
         NavigationStack {
-            //el switch es una máquina de estado, que sustituye al if comentado de abajo, queda mejor
             switch vm.moviesListState {
 //            case .isLoading:
 //                ProgressView()//florecilla
@@ -23,9 +21,9 @@ struct MoviesView: View {
             case .isLoaded:
 //                viene del enum del vm para poder elegir navegar a la vista list o grid
                 switch vm.viewType {
-                case .listView:
-                    MoviesListView(vm: vm, type: type)
-                case .gridView:
+                case .list:
+                    MoviesListView(vm: vm, type: vm.moviesType)
+                case .grid:
                     MoviesGridView(vm: vm)
                 }
             case .error:
@@ -33,20 +31,6 @@ struct MoviesView: View {
                     vm.loadMovies()
                 }
             }
-            /*
-             Esta opción es menos estética en el código:
-             
-             if !vm.isLoading {//negamos el isloading
-             List(vm.movies) { movie in
-             MovieCell(movie: movie)
-             }
-             .navigationTitle("Movies")
-             } else {
-             ProgressView()//florecilla
-             .controlSize(.large)
-             }
-             
-             */
         }
         .overlay {
             if vm.isLoading {
@@ -63,10 +47,9 @@ struct MoviesView: View {
     }
 }
 //MARK: MIRAR EL ENVIRONMENT
-struct PopMoviesView_Previews: PreviewProvider {
+struct MoviesView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesView(vm: .previewMovie, type: .popular)
-
+        MoviesView(vm: .previewMovie)
     }
 }
 

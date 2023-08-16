@@ -34,7 +34,7 @@ struct MoviesGridView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.viewType = .listView
+                    vm.viewType = .list
                 } label: {
                     Image(systemName: "list.star")
                 }

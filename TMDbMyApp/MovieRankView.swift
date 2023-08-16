@@ -45,6 +45,6 @@ struct MovieRankView: View {
 
 struct MovieRankView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieRankView(movie: .testMovie)
+        MovieRankView(movie: .testMovieDetail)
     }
 }
