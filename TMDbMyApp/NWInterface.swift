@@ -53,7 +53,7 @@ extension URLRequest {
 //        para poder elegir post o get
         request.httpMethod = HTTPMethods.get.rawValue
 //        para poder poner el token(siempre probar con "Bearer" delante) y "Authorization"
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YjBiMzkzNjg1NzZjZTcwYzNkNjVhOGU1NjcyYjkwOSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PWY2tV1Tfuy4N7uOIc5VzQ5Ey_qUSj4oniK2iBkRK8", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
         
         return request
     }
@@ -62,7 +62,7 @@ extension URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get.rawValue
 //        para poder poner el token(siempre probar con "Bearer" delante) y "Authorization"
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YjBiMzkzNjg1NzZjZTcwYzNkNjVhOGU1NjcyYjkwOSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PWY2tV1Tfuy4N7uOIc5VzQ5Ey_qUSj4oniK2iBkRK8", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
         return request
     }
 }

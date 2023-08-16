@@ -9,17 +9,16 @@ import SwiftUI
 
 //MARK: - Vista detalle para las movie
 struct MovieDetailView: View {
-    var movie: Movie
-    @EnvironmentObject var vm: MovieDetailVm
+    @ObservedObject var vm: MovieDetailVm
     
     var body: some View {
         ScrollView {
             VStack {
-                MoviePosterView(movie: movie, size: .cover
+                MoviePosterView(movie: vm.selectedMovie, size: .cover
                                 
                 )
                     .ignoresSafeArea()//para q ocupe toda la pantalla
-                Link(destination: .getLinkMovies(id: movie.id, title: movie.originalTitle)) {
+                Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
                     Text("Link Movie")
                 }
                 
@@ -31,11 +30,11 @@ struct MovieDetailView: View {
                         .padding()
                     }
                     .onAppear(perform: {
-                        vm.loadMember(id: movie.id)
+                        vm.loadMember(id: vm.selectedMovie.id)
                     })
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            ShareLink("Share", item: .getLinkMovies(id: movie.id, title: movie.originalTitle))
+                            ShareLink("Share", item: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle))
                         }
                     }
                 }
@@ -44,13 +43,12 @@ struct MovieDetailView: View {
         }
     }
 }
-
+//MARK: Los constructores de las vistas pedirán en su inicialización las prop no inicializadas q contenga el struct dentro
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            
+            MovieDetailView(vm: .previewDetail)
         }
-            .environmentObject(PopMoviesVm.previewMovie)
     }
 }
 

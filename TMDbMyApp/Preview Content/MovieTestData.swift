@@ -55,12 +55,12 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
     }    
 }
 //creamos esta ext de moviesvm para poder elegir aquí la de test, y la creamos para no tener que poner todo en la preview y solo poner la prop de moviesvm preview, la creamos aqui para q no suba a produccion
-extension PopMoviesVm {
-    static let previewMovie = PopMoviesVm(repository: MovieRepositoryTest())
+extension MoviesVm {
+    static let previewMovie = MoviesVm(repository: MovieRepositoryTest())
 }
 
 extension MovieDetailVm {
-    static let previewDetail = MovieDetailVm(repository: MovieRepositoryTest())
+    static let previewDetail = MovieDetailVm(repository: MovieRepositoryTest(), selectedMovie: .testMovie)
 }
 
 extension Movie {

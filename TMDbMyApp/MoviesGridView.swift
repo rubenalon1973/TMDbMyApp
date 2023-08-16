@@ -8,10 +8,10 @@
 import SwiftUI
 
 
-struct PopMoviesGridView: View {
+struct MoviesGridView: View {
     //    array(rep:, count:) repite algo x veces
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
-    @EnvironmentObject var vm: PopMoviesVm
+    @ObservedObject var vm: MoviesVm
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -34,7 +34,7 @@ struct PopMoviesGridView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.moviesStyle = .listView
+                    vm.viewType = .listView
                 } label: {
                     Image(systemName: "list.star")
                 }
@@ -46,9 +46,7 @@ struct PopMoviesGridView: View {
 struct PopMoviesGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PopMoviesGridView()
-                .environmentObject(PopMoviesVm.previewMovie)
+            MoviesGridView(vm: .previewMovie)
         }
-        .environmentObject(MovieDetailVm.previewDetail)
     }
 }

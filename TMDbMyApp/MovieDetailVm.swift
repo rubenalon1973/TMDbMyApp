@@ -9,11 +9,14 @@ import Foundation
 
 final class MovieDetailVm: ObservableObject {
     let repository: MovieRepositoryProtocol
+    let selectedMovie: Movie//para la seleccion de la peli q vamos a ver en detalle
     
     @Published var castMember: [CastMember] = []
     
-    init(repository: MovieRepositoryProtocol = MoviesRepository.shared) {
+    init(repository: MovieRepositoryProtocol = MoviesRepository.shared, selectedMovie: Movie) {
         self.repository = repository
+        self.selectedMovie = selectedMovie
+        self.loadMember(id: selectedMovie.id)
     }
     
     func loadMember(id: Int) {

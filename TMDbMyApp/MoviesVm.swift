@@ -16,17 +16,17 @@ enum MovieListState {
     case error
 }
 //para nav a una vista u otra
-enum MoviesStyle {
+enum MoviesViewType {
     case listView
     case gridView
 }
 
 enum GetMoviesType {
-    case Popular
+    case popular
     case nowPlay
 }
 
-final class PopMoviesVm: ObservableObject {
+final class MoviesVm: ObservableObject {
 //    para poder decirle de que datos tirar. NO inicializamos y x eso tenmos el init
     let repository: MovieRepositoryProtocol
     var page = 1
@@ -36,26 +36,26 @@ final class PopMoviesVm: ObservableObject {
     @Published var isLoading = true//para el loading al iniciar la app
 //    inyección de dependencias, para poder decirle de q repository tirar, por defecto será del real, sino se lo indicamos
     @Published var moviesListState: MovieListState = .isLoaded//para el switch de la vista
-    @Published var moviesStyle: MoviesStyle = .listView
-    @Published var viewType: GetMoviesType = .Popular
+    @Published var viewType: MoviesViewType = .listView
+    @Published var moviesType: GetMoviesType = .popular
     
-    init(repository: MovieRepositoryProtocol = MoviesRepository.shared) { self.repository = repository//posibilidad de cargar de otro, esta es la inicialización, y sino le decimmos nada coge el real y sino le diremos aqui el otro que queramos
-//        loadMovies()_ quitamos pq hacía 2 llamadas en simulador, 1 en el init y otra en el task del list
+    init(movieType: GetMoviesType = .popular, repository: MovieRepositoryProtocol = MoviesRepository.shared) {
+        self.repository = repository//posibilidad de cargar de otro, esta es la inicialización, y sino le decimmos nada coge el real y sino le diremos aqui el otro que queramos
+        self.moviesType = movieType
+        loadMovies()
     }
     
     func loadMovies() {
         Task { @MainActor in
             do {
                 //                sleep(3)//podemos poner esto para ver que sale el isloading, pero lo quitamos pq sino la preview se raya pq dice que ha tardado + de 5seg en hacerlo
-                switch viewType {
-                case .Popular:
+                switch moviesType {
+                case .popular:
                     movies += try await repository.getPopMovies(page: page)//+= para q no se borren las anteriores
                     isLoading = false
-//                    moviesListState = .isLoaded//cdo acaba de cargar las pelis/no hace falta ya con el isLoading = false
                 case .nowPlay:
                     movies += try await repository.getNowPlayingMovies(page: page)//+= para q no se borren las anteriores
                     isLoading = false
-//                    moviesListState = .isLoaded//cdo acaba de cargar las pelis/no hace falta ya con el isLoading = false
                 }
             } catch let error as NetworkError {
                 moviesListState = .error
@@ -68,10 +68,10 @@ final class PopMoviesVm: ObservableObject {
         }
     }
 //    cada vez q se exe se resetea la vista q entremos de nuevo
-    func initialDataValue() {
-        page = 1
-        movies = []
-    }
+//    func initialDataValue() {
+//        page = 1
+//        movies = []
+//    }
     //    para comprobar si estamos en el último item, y sumamos una pag(llamamos a la fx de debajo de esta)
     func loadNextPage(movie: Movie) {
         if isLastItem(movie: movie) {

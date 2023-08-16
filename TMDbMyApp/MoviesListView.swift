@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct PopMoviesListView: View {
-    @EnvironmentObject var vm: PopMoviesVm
+struct MoviesListView: View {
+    @ObservedObject var vm: MoviesVm//no lo inicializamos pq luego a la preview le pasaremos el que queramos
+    
+    var type: GetMoviesType//para pasarle .Popular o .Playing
     
     var body: some View {
         //el list hace el foreach
@@ -21,16 +23,16 @@ struct PopMoviesListView: View {
             }
         }
         .task {
-            vm.loadMovies()
+            vm.moviesType = type
         }
         .navigationDestination(for: Movie.self, destination: { movie in
-            MovieDetailView(movie: movie)
+            MovieDetailView(vm: MovieDetailVm(selectedMovie: movie))
         })
         .navigationTitle("Popular movies")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.moviesStyle = .gridView
+                    vm.viewType = .gridView
                 } label: {
                     Image(systemName: "squareshape.split.2x2")
                 }
@@ -43,10 +45,8 @@ struct PopMoviesListView: View {
 struct PopMoviesListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PopMoviesListView()
-                .environmentObject(PopMoviesVm.previewMovie)
+            MoviesListView(vm: .previewMovie, type: .popular)
         }
-        .environmentObject(MovieDetailVm.previewDetail)
     }
 }
 

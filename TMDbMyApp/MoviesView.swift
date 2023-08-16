@@ -8,8 +8,9 @@
 import SwiftUI
 
 //MARK: - View principal de las movies
-struct PopMoviesView: View {
-    @EnvironmentObject var vm: PopMoviesVm //no instanciamos para poder llamar a los dos sitios
+struct MoviesView: View {
+    @ObservedObject var vm: MoviesVm //no instanciamos para poder llamar a los dos sitios
+    var type: GetMoviesType
     
     var body: some View {
         NavigationStack {
@@ -21,11 +22,11 @@ struct PopMoviesView: View {
 //                simplificamos llevando el list en una vista aparte y lo llamamos desde aquí
             case .isLoaded:
 //                viene del enum del vm para poder elegir navegar a la vista list o grid
-                switch vm.moviesStyle {
+                switch vm.viewType {
                 case .listView:
-                    PopMoviesListView()
+                    MoviesListView(vm: vm, type: type)
                 case .gridView:
-                    PopMoviesGridView()
+                    MoviesGridView(vm: vm)
                 }
             case .error:
                 CustomAlertView(title: "Something went wrong", message: "Cannot load data", buttonText: "Try again") {
@@ -64,9 +65,8 @@ struct PopMoviesView: View {
 //MARK: MIRAR EL ENVIRONMENT
 struct PopMoviesView_Previews: PreviewProvider {
     static var previews: some View {
-        PopMoviesView()
-            .environmentObject(PopMoviesVm.previewMovie)
-            .environmentObject(MovieDetailVm.previewDetail)
+        MoviesView(vm: .previewMovie, type: .popular)
+
     }
 }
 
