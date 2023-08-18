@@ -1,5 +1,5 @@
 //
-//  PopMoviesVm.swift
+//  MoviesVM.swift
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 4/8/23.
@@ -24,9 +24,11 @@ enum MoviesViewType {
 enum GetMoviesType {
     case popular
     case nowPlay
+    case topRated
+    case upcoming
 }
 
-final class MoviesVm: ObservableObject {
+final class MoviesVM: ObservableObject {
 //    para poder decirle de que datos tirar. NO inicializamos y x eso tenmos el init
     let repository: MovieRepositoryProtocol
     var page = 1
@@ -38,6 +40,19 @@ final class MoviesVm: ObservableObject {
     @Published var moviesListState: MovieListState = .isLoaded//para el switch de la vista
     @Published var viewType: MoviesViewType = .list
     @Published var moviesType: GetMoviesType = .popular
+    
+    var titleView: String {
+        switch moviesType {
+        case .popular:
+            return "Popular Movies"
+        case .nowPlay:
+            return "Now Playing"
+        case .topRated:
+            return "Top Rated"
+        case .upcoming:
+            return "Upcoming"
+        }
+    }
     
     init(movieType: GetMoviesType = .popular, repository: MovieRepositoryProtocol = MoviesRepository.shared) {
         self.repository = repository//posibilidad de cargar de otro, esta es la inicialización, y sino le decimmos nada coge el real y sino le diremos aqui el otro que queramos
@@ -55,6 +70,12 @@ final class MoviesVm: ObservableObject {
                     isLoading = false
                 case .nowPlay:
                     movies += try await repository.getNowPlayingMovies(page: page)//+= para q no se borren las anteriores
+                    isLoading = false
+                case .topRated:
+                    movies += try await repository.getTopRatedMovies(page: page)
+                    isLoading = false
+                case .upcoming:
+                    movies += try await repository.getUpcomingMovies(page: page)
                     isLoading = false
                 }
             } catch let error as NetworkError {

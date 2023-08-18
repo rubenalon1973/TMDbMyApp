@@ -9,25 +9,49 @@ import SwiftUI
 
 //MARK: - Vista detalle para las movie
 struct MovieDetailView: View {
-    @ObservedObject var vm: MovieDetailVm
+    @ObservedObject var vm: MovieDetailVM
     
     var body: some View {
         ScrollView {
             VStack {
                 MoviePosterView(movie: vm.selectedMovie, size: .cover
-                                
                 )
-                    .ignoresSafeArea()//para q ocupe toda la pantalla
-                Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
-                    Text("Link Movie")
+                .ignoresSafeArea()//para q ocupe toda la pantalla
+                HStack {
+                    VStack {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 30))
+                            .padding(0.5)
+                        Text("\(vm.selectedMovie.rank)/10")
+                        Text("\(vm.selectedMovie.releaseYear)")
+                            .font(.title3)
+                    }
                 }
+                Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
+                    Image(systemName: "link")
+                        .foregroundColor(.accentColor)
+                    Text("Show in TMDb")
+                        .font(.title3)
+                }
+                .padding()
+                VStack {
+                    Text(vm.selectedMovie.originalTitle)
+                        .font(.title2)
+                        .bold()
+                        .padding(8)
+                    Text(vm.selectedMovie.overview)
+                        .padding()
+                    
+                }
+                .padding()
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid (rows: [GridItem()]){
                         ForEach(vm.castMember) { member in
                             ActorPosterView(actor: member, size: 120)
                         }
-                        .padding()
+                        .padding(8)
                     }
                     .onAppear(perform: {
                         vm.loadMember(id: vm.selectedMovie.id)

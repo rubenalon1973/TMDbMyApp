@@ -9,7 +9,7 @@ import SwiftUI
 
 //MARK: - View principal de las movies
 struct MoviesView: View {
-    @ObservedObject var vm: MoviesVm //no instanciamos para poder llamar a los dos sitios
+    @ObservedObject var vm: MoviesVM //no instanciamos para poder llamar a los dos sitios
     
     var body: some View {
         NavigationStack {
@@ -46,7 +46,7 @@ struct MoviesView: View {
         }
     }
 }
-//MARK: MIRAR EL ENVIRONMENT
+
 struct MoviesView_Previews: PreviewProvider {
     static var previews: some View {
         MoviesView(vm: .previewMovie)

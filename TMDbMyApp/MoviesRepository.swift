@@ -13,7 +13,10 @@ import Foundation
 protocol MovieRepositoryProtocol {
     func getPopMovies(page: Int) async throws -> [Movie]
     func getCastMember(id: Int) async throws -> [CastMember]
-    func getNowPlayingMovies(page: Int) async throws -> [Movie] 
+    func getNowPlayingMovies(page: Int) async throws -> [Movie]
+    func getTopRatedMovies(page: Int) async throws -> [Movie]
+    func getUpcomingMovies(page: Int) async throws -> [Movie]
+    func getActorDetail(id: Int) async throws -> Actor
 }
 
 final class MoviesRepository: MovieRepositoryProtocol {
@@ -25,7 +28,8 @@ final class MoviesRepository: MovieRepositoryProtocol {
     func getPopMovies(page: Int) async throws -> [Movie] {
         print("entra getpopmovies api")
         
-        return try await getJSON(urlRequest: .MoviesRequest(url: .getPopMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getPopMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
+        }
         
         /*  lo de debajo es creando let movies en vez del return y transf con el map llamando a la fx mapToModel de MovieDTO a Movie, pero si lo hacemos directax en las dos líneas de arriba, es más pro y menos cod.
          
@@ -44,5 +48,17 @@ final class MoviesRepository: MovieRepositoryProtocol {
     func getNowPlayingMovies(page: Int) async throws -> [Movie] {
         return try await getJSON(urlRequest: .MoviesRequest(url: .getPlayingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
         }
+    }
+    
+    func getTopRatedMovies(page: Int) async throws -> [Movie] {
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getTopRatedMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+    }
+    
+    func getUpcomingMovies(page: Int) async throws -> [Movie] {
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getPlayingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+    }
+    
+    func getActorDetail(id: Int) async throws -> Actor {
+        try await getJSON(urlRequest: .actorRequest(url: .getActorDetail(id: id)), type: ActorDTO.self).mapToModel()
     }
 }

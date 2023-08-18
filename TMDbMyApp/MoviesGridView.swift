@@ -11,7 +11,7 @@ import SwiftUI
 struct MoviesGridView: View {
     //    array(rep:, count:) repite algo x veces
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
-    @ObservedObject var vm: MoviesVm
+    @ObservedObject var vm: MoviesVM
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {

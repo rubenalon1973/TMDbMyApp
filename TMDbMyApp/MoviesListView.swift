@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MoviesListView: View {
-    @ObservedObject var vm: MoviesVm//no lo inicializamos pq luego a la preview le pasaremos el que queramos
+    @ObservedObject var vm: MoviesVM//no lo inicializamos pq luego a la preview le pasaremos el que queramos
     
-    var type: GetMoviesType//para pasarle .Popular o .Playing
+    var type: GetMoviesType//para pasarle .Popular, .Playing, TopRates o Upcoming
     
     var body: some View {
         //el list hace el foreach
@@ -26,9 +26,9 @@ struct MoviesListView: View {
             vm.moviesType = type
         }
         .navigationDestination(for: Movie.self, destination: { movie in
-            MovieDetailView(vm: MovieDetailVm(selectedMovie: movie))
+            MovieDetailView(vm: MovieDetailVM(selectedMovie: movie))
         })
-        .navigationTitle("Popular movies")
+        .navigationTitle(vm.titleView)//elige title el vm con un switch de un enum existente
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {

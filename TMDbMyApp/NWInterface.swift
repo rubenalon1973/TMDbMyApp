@@ -14,12 +14,14 @@ let mainURL = URL(string: "https://api.themoviedb.org/3")!
 //URL base de las image
 let imageURLBase = URL(string: "https://image.tmdb.org/t/p/w500")!
 let linkURLBase = URL(string: "https://www.themoviedb.org/movie/")!
-var profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/")!
+let profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/")!
 
 //Extensión con el edpoint de lo que necesitamos
 extension URL {
     static let getPopMovies = mainURL.appending(path: "movie/popular")//para poner el edpoint a la main
     static let getPlayingMovies = mainURL.appending(path: "movie/now_playing")
+    static let getTopRatedMovies = mainURL.appending(path: "movie/top_rated")
+//    static let getActorDetail = mainURL.appending(path: "person")
     
     static func getPosterPath(poster: String) -> URL {//para poner el edpoint del poster de la image de cada peli donde en la view de diseño del poster
         imageURLBase.appending(path: poster)
@@ -33,7 +35,17 @@ extension URL {
         mainURL.appending(path: "movie/\(id)/credits")
     }
 //    aquí ponemos el param ent de tipo del modelo, pq necesitamos acceder al ser opc, para poder hacer el unwrapp
-    static func getprofilePath(actor: CastMember) -> URL? {
+    static func getprofilePathCast(actor: CastMember) -> URL? {
+        guard let actor = actor.profilePath else { return nil }
+        
+        return profilePathURLBase.appending(path: actor)
+    }
+    
+    static func getActorDetail(id: Int) -> URL {
+        mainURL.appending(path: "person/\(id)")
+    }
+    
+    static func getProfilePathActor(actor: Actor) -> URL? {
         guard let actor = actor.profilePath else { return nil }
         
         return profilePathURLBase.appending(path: actor)
@@ -65,9 +77,17 @@ extension URLRequest {
         request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
         return request
     }
+    
+    static func actorRequest(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethods.get.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
+        return request
+    }
 }
 //por si necesitamos hacer también algún post
 enum HTTPMethods: String {
     case get = "GET"
     case post = "POST"
 }
+

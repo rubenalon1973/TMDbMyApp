@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MoviesHomeView: View {
-    @ObservedObject var popVM = MoviesVm()
-    @ObservedObject var nowPlayVM = MoviesVm(movieType: .nowPlay)
-    
+    @ObservedObject var popVM = MoviesVM()
+    @ObservedObject var nowPlayVM = MoviesVM(movieType: .nowPlay)
+    @ObservedObject var topRatedVM = MoviesVM(movieType: .topRated)
+    @ObservedObject var upcomingVM = MoviesVM(movieType: .upcoming)
     var body: some View {
         TabView {
             MoviesView(vm: popVM)
@@ -21,11 +22,11 @@ struct MoviesHomeView: View {
                 .tabItem {
                     Label("Now Playing", systemImage: "play")
                 }
-            Text("Top Rated")
+            MoviesView(vm: topRatedVM)
                 .tabItem {
                     Label("Top Rated", systemImage: "star.fill")
                 }
-            Text("Upcoming")
+            MoviesView(vm: upcomingVM)
                 .tabItem {
                     Label("Upcoming", systemImage: "calendar")
                 }
@@ -35,8 +36,6 @@ struct MoviesHomeView: View {
 
 struct MoviesHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesHomeView()
-            .environmentObject(MoviesVm.previewMovie)
-            .environmentObject(MovieDetailVm.previewDetail)
+        MoviesHomeView(popVM: .previewMovie, nowPlayVM: .previewMovie, topRatedVM: .previewMovie, upcomingVM: .previewMovie)
     }
 }

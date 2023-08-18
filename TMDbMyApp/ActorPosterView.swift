@@ -15,23 +15,33 @@ struct ActorPosterView: View {
         //        AsyncImage hace el foreach utilizando la fx extensión de URL en capa de config de llamadas
         //        el asyncimage gestiona opcionales y no hace falta unwrapp
         VStack {
-            AsyncImage(url: .getprofilePath(actor: actor)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .frame(width: 150, height: 250)
-            } placeholder: {
-                Image(systemName: "popcorn")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 250)
+            ZStack {
+                AsyncImage(url: .getprofilePathCast(actor: actor)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 150, height: 220)
+                        .cornerRadius(4)
+                } placeholder: {
+                    Image(systemName: "popcorn")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 150, height: 220)
+                        .cornerRadius(4)
+                }
             }
+            
             VStack {
                 Text(actor.name)
                 Text(actor.character ?? "")
             }
             .padding(8)
+        }
+        .frame(maxWidth: 150)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(radius: 10)
         }
     }
 }

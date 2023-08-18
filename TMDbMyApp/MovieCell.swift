@@ -17,11 +17,22 @@ struct MovieCell: View {
                 .overlay(alignment: .bottomTrailing) {//lo contrario a background, es para poner elementos encima de una vista, en este caso abajo a la drcha
                     MovieRankView(movie: movie)//ponemos el círculo de los votos
                 }
-            VStack {
+            VStack(alignment: .leading){
                 Text(movie.originalTitle)
                     .font(.title2)
+                    .bold()
                 Text("Year: \(movie.releaseYear)")
+                    .padding(1)
+                    .foregroundColor(.gray)
+                    .bold()
             }
+            .padding(10)
+        }
+        .frame(maxWidth: 400)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(radius: 10)
         }
     }
 }
