@@ -37,10 +37,9 @@ struct ActorPosterView: View {
             }
             .padding(8)
         }
-        .frame(maxWidth: 150)
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
+                .fill(.clear)
                 .shadow(radius: 10)
         }
     }

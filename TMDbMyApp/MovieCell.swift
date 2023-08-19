@@ -19,6 +19,7 @@ struct MovieCell: View {
                 }
             VStack(alignment: .leading){
                 Text(movie.originalTitle)
+//                    .foregroundColor(.gray)
                     .font(.title2)
                     .bold()
                 Text("Year: \(movie.releaseYear)")

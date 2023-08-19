@@ -12,7 +12,7 @@ struct PagerView: View {
     
     let dotAppearience = UIPageControl.appearance()//para personalizar la apariencia de los puntos
     
-//    MARK: - Personalizar
+//    TODO: - Personalizar con mis textos e imágenes
     var pagesReal: [PageModel] =
              [
                 PageModel(title: "Explora un Mundo de Películas", description: "Sumérgete en un vasto océano de películas, desde clásicos atemporales hasta los últimos éxitos de taquilla. ¡Descubre historias que te emocionarán y te cautivarán!", image: "ice1", tag: 0),

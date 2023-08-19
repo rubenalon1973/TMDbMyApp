@@ -19,7 +19,7 @@ struct MoviesGridView: View {
                 ForEach(vm.movies) { movie in
                     NavigationLink(value: movie) {
                         MoviePosterView(movie: movie, size: .grid)
-                            .overlay(alignment: .topLeading) {
+                            .overlay(alignment: .bottomTrailing) {
                                 MovieRankView(movie: movie)
                             }
                             .onAppear {
@@ -30,8 +30,10 @@ struct MoviesGridView: View {
             }
             .padding()
         }
-//        TODO: NavigationDestination
-        .navigationTitle("Popular movies")
+        .navigationDestination(for: Movie.self, destination: { movie in
+            MovieDetailView(vm: MovieDetailVM(selectedMovie: movie))
+        })
+        .navigationTitle(vm.titleView)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
