@@ -85,7 +85,8 @@ extension MovieDetailVM {
 }
 
 extension ActorDetailVM {
-    static let previewActor = ActorDetailVM(repository: MovieRepositoryTest(), selectedActor: .testActorDetail)
+//    static let previewActor = ActorDetailVM(repository: MovieRepositoryTest(), selectedActor: .testActorDetail)
+    static let previewCast = ActorDetailVM(repository: MovieRepositoryTest(), castMember: .testMember)
 }
 
 extension Movie {
@@ -116,5 +117,9 @@ extension Actor {
                                        placeOfBirth: "Alameda County, California, USA",
                                        popularity: 57.941,
                                        profilePath: "/vD28HWRqBxDgdGLXSgu6XYcn3BI.jpg")
+    
+    static let emptyActor = Actor(biography: "", birthday: "", deathday: "", id: 12835, name: "", placeOfBirth: "", popularity: 0, profilePath: "")
 }
+
+
 

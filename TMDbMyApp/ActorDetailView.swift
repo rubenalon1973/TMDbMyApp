@@ -14,61 +14,54 @@ struct ActorDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                AsyncImage (url: .getProfilePathActor(actor: vm.selectedActor)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 400)
-                        .cornerRadius(8)
-                        .padding()
-                } placeholder: {
-                    Image(systemName: "star")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 400)
-                        .cornerRadius(8)
-                        .padding()
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Group {
+                if let actor = vm.selectedActor {
+                    AsyncImage (url: .getProfilePathActor(actor: actor)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 350)
+                            .cornerRadius(8)
+                    } placeholder: {
+                        Image(systemName: "star")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 350)
+                            .cornerRadius(8)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("Name:")
                             .bold()
-                        Text(vm.selectedActor.name)
+                        Text(actor.name)
                         
                         Text("Birthday")
                             .bold()
-                        Text(vm.selectedActor.birthday)
+                        Text(actor.birthday)
                         
                         Text("Place of birth")
-                        Text(vm.selectedActor.placeOfBirth)
-                    }
-                    Group {
+                            .bold()
+                        Text(actor.placeOfBirth)
+                        
                         Text("Popularty")
-                        Text(String(vm.selectedActor.popularity))
+                            .bold()
+                        Text(String(actor.popularity))
                         
                         Text("Biography:")
                             .bold()
-                        Text(vm.selectedActor.biography)
+                        Text(actor.biography)
                     }
-                    
-                   
-
+                    .padding(10)
                 }
-                .padding(10)
             }
-            .frame(maxWidth: 400)
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                    .shadow(radius: 10)
-            }
+            
         }
+        .padding(.bottom, 80)
+        .ignoresSafeArea()
     }
 }
 
 struct ActorDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorDetailView(vm: ActorDetailVM(selectedActor: .testActorDetail), size: 400)
+        ActorDetailView(vm: .previewCast, size: 400)
     }
 }

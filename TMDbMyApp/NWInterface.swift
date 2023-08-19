@@ -20,6 +20,7 @@ let profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h4
 extension URL {
     static let getPopMovies = mainURL.appending(path: "movie/popular")//para poner el edpoint a la main
     static let getPlayingMovies = mainURL.appending(path: "movie/now_playing")
+    static let getUpcomingMovies = mainURL.appending(path: "movie/upcoming")
     static let getTopRatedMovies = mainURL.appending(path: "movie/top_rated")
 //    static let getActorDetail = mainURL.appending(path: "person")
     

@@ -21,7 +21,13 @@ struct MoviesListView: View {
                         vm.loadNextPage(movie: movie)
                     }
             }
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(radius: 10)
+            }
         }
+//        para elegir el tipo de listado
         .task {
             vm.moviesType = type
         }

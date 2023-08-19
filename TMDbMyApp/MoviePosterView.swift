@@ -26,17 +26,16 @@ struct MoviePosterView: View {
                     .scaledToFit()
                     .frame(width: size.rawValue)//luego al llamarlo pondremos en la vista q sea el tamaño q queramos
                     .cornerRadius(8)
-                    .padding()
             } placeholder: {
                 Image(systemName: "star")
                     .resizable()
                     .scaledToFit()
                     .frame(width: size.rawValue)
                     .cornerRadius(8)
-                    .padding()
             }
         }
     }
+
 }
 
 struct MoviePosterView_Previews: PreviewProvider {

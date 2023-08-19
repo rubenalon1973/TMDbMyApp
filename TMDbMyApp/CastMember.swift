@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct CastMember: Codable, Identifiable {
+struct CastMember: Codable, Identifiable, Hashable {
     let id: Int
     let name: String
     let profilePath: String?

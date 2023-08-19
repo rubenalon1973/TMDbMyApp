@@ -28,12 +28,13 @@ struct MovieCell: View {
             }
             .padding(10)
         }
-        .frame(maxWidth: 400)
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(radius: 10)
-        }
+//        MARK: También se puede poner en el NavigatiónLink
+//        .frame(maxWidth: 400)
+//        .background {
+//            RoundedRectangle(cornerRadius: 10)
+//                .fill(Color.white)
+//                .shadow(radius: 10)
+//        }
     }
 }
 

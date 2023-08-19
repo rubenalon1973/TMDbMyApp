@@ -30,13 +30,13 @@ struct MovieRankView: View {
                 .background {
                     Circle()
                         .trim(from: 0.0, to: movie.voteAverage / 10)
-                        .stroke(lineWidth: size == .small ? 8 : 12)//aquí cambia el tamaño en fx del case q se elija
+                        .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
                         .fill(movie.voteAverage > 8 ? Color.green : Color.orange)
                         .rotationEffect(.degrees(-90))
                 }
                 .background {
                     Circle()
-                        .stroke(lineWidth: size == .small ? 8 : 12)//aquí cambia el tamaño en fx del case q se elija
+                        .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
                         .fill(Color.gray)
                 }
                 .offset(x: 5, y: 5)//ubicación en esta vista, q es dónde se ubicará donde lo sobrepongamos

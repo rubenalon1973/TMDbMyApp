@@ -10,13 +10,13 @@ import SwiftUI
 //MARK: - Vista detalle para las movie
 struct MovieDetailView: View {
     @ObservedObject var vm: MovieDetailVM
+    @State var showProviders = false
     
     var body: some View {
         ScrollView {
             VStack {
                 MoviePosterView(movie: vm.selectedMovie, size: .cover
                 )
-                .ignoresSafeArea()//para q ocupe toda la pantalla
                 HStack {
                     VStack {
                         Image(systemName: "star.fill")
@@ -35,6 +35,14 @@ struct MovieDetailView: View {
                         .font(.title3)
                 }
                 .padding()
+//                MARK: Para ver en que plataformas está
+                Button(action: {
+                    showProviders.toggle()
+                }, label: {
+                    Image(systemName: "play")
+                    Text("Watch Providers")
+                })
+                    
                 VStack {
                     Text(vm.selectedMovie.originalTitle)
                         .font(.title2)
@@ -49,21 +57,32 @@ struct MovieDetailView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid (rows: [GridItem()]){
                         ForEach(vm.castMember) { member in
-                            ActorPosterView(actor: member, size: 120)
+                            NavigationLink(value: member) {
+                                ActorPosterView(actor: member, size: 120)
+                            }
                         }
                         .padding(8)
                     }
                     .onAppear(perform: {
                         vm.loadMember(id: vm.selectedMovie.id)
                     })
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            ShareLink("Share", item: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle))
-                        }
-                    }
                 }
-                .ignoresSafeArea()//para q ocupe toda la pantalla
+                .padding(.bottom, 80)
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ShareLink("Share", item: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle))
+            }
+        }
+        .ignoresSafeArea(.all)
+        .sheet(isPresented: $showProviders, content: {
+            Text("Providers")
+                .presentationDetents([.medium])
+        })
+        
+        .navigationDestination(for: CastMember.self) { member in
+            ActorDetailView(vm: ActorDetailVM(castMember: member), size: 400)
         }
     }
 }

@@ -42,7 +42,8 @@ final class MoviesRepository: MovieRepositoryProtocol {
     func getCastMember(id: Int) async throws -> [CastMember] {
         print("entra getcastmember api")
         
-        return try await getJSON(urlRequest: .movieCastRequest(url: .getMovieCast(id: id)), type: CreditResult.self).cast.map{ $0.mapToModel() }
+        return try await getJSON(urlRequest: .movieCastRequest(url: .getMovieCast(id: id)), type: CreditResult.self).cast.map{ $0.mapToModel()
+        }
     }
     
     func getNowPlayingMovies(page: Int) async throws -> [Movie] {
@@ -51,11 +52,13 @@ final class MoviesRepository: MovieRepositoryProtocol {
     }
     
     func getTopRatedMovies(page: Int) async throws -> [Movie] {
-        return try await getJSON(urlRequest: .MoviesRequest(url: .getTopRatedMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getTopRatedMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
+        }
     }
     
     func getUpcomingMovies(page: Int) async throws -> [Movie] {
-        return try await getJSON(urlRequest: .MoviesRequest(url: .getPlayingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getUpcomingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
+        }
     }
     
     func getActorDetail(id: Int) async throws -> Actor {
