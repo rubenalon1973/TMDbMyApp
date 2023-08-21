@@ -21,25 +21,23 @@ struct ActorPosterView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 150, height: 220)
-                        .cornerRadius(4)
+                        .cornerRadius(10)
                 } placeholder: {
                     Image(systemName: "popcorn")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 150, height: 220)
-                        .cornerRadius(4)
+                        .cornerRadius(10)
                 }
             }
             
             VStack(alignment: .leading, spacing: 3) {
                 Text(actor.name)
-//                    .font(.title2)
-//                    .padding(8)
+                    .frame(width: 150, height: .none)
                 Text(actor.character ?? "")
-                    
+                    .frame(width: 150, height: .none)
             }
             .padding()
-//            .frame(maxHeight: 150)
         }
         .frame(maxWidth: 150)
         .background {

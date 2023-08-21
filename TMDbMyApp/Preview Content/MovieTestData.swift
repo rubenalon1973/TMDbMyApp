@@ -108,7 +108,7 @@ extension CastMember {
         id: 550,
         name: "Edward Norton",
         profilePath: "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg",
-        character: "The Narrator xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        character: "The Narrator"
     )
 }
 

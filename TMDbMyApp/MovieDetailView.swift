@@ -18,41 +18,103 @@ struct MovieDetailView: View {
             VStack {
                 MoviePosterView(movie: vm.selectedMovie, size: .cover
                 )
-                HStack {
+                                HStack {
+                                    VStack {
+                                        Image(systemName: "star.fill")
+                                            .foregroundColor(.yellow)
+                                            .font(.system(size: 30))
+                                            .padding(0.5)
+                                        Text("\(vm.selectedMovie.rank)/10")
+                                        Text("\(vm.selectedMovie.releaseYear)")
+                                            .font(.title3)
+                                    }
+                                }
+                                .padding()
+                HStack(spacing: 10) {
+
+                  Button {
+
+                  } label: {
                     VStack {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                            .font(.system(size: 30))
-                            .padding(0.5)
-                        Text("\(vm.selectedMovie.rank)/10")
-                        Text("\(vm.selectedMovie.releaseYear)")
-                            .font(.title3)
+                      Image(systemName: "link.circle")
+                      Text("Link")
                     }
-                }
-                Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
-                    Image(systemName: "link")
-                        .foregroundColor(.accentColor)
-                    Text("Show in TMDb")
-                        .font(.title3)
+                    .font(.title2)
+                    .frame(width: 100, height: 100)
+                  }
+                  .buttonStyle(.bordered)
+
+                  Button {
+                  
+                  } label: {
+                    VStack {
+                      Image(systemName: "play.circle")
+                      Text("Trailer")
+                    }
+                    .font(.title2)
+                    .frame(width: 100, height: 100)
+                  }
+                  .buttonStyle(.bordered)
+
+                  Button {
+
+                  } label: {
+                    VStack {
+                      Image(systemName: "tv.circle")
+                      Text("Providers")
+                    }
+                    .font(.title2)
+                    .frame(width: 100, height: 100)
+                  }
+                  .buttonStyle(.bordered)
                 }
                 .padding()
-//
-                Button {
-                    showTrailer.toggle()
-                } label: {
-                   Text("Trailer")
-                    Image(systemName: "play")
-                }
 
-//                MARK: Para ver en que plataformas está
-                Button(action: {
-                    showProviders.toggle()
-                }, label: {
-                    Image(systemName: "play")
-                    Text("Watch Providers")
-                })
+//                HStack(spacing: 20) {
+//                    Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
+//                        Image(systemName: "link.circle.fill")
+//                        Text("Show in TMDb")
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .frame(width: 100, height: 100)
+//                    .background(.white)
+//                    .clipShape(Circle())
+////                    .overlay(
+////                          RoundedRectangle(cornerRadius: 10)
+////                            .stroke(.blue, lineWidth: 1)
+////                        )
+//                    Button {
+//                        showTrailer.toggle()
+//                    } label: {
+//                       Image(systemName: "play.circle.fill")
+//                       Text("Trailer")
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .frame(width: 100, height: 200)
+//                    .background(.white)
+//                    .clipShape(Circle())
+////                    .overlay(
+////                          RoundedRectangle(cornerRadius: 10)
+////                            .stroke(.gray, lineWidth: 1)
+////                        )
+//    //                MARK: Para ver en que plataformas está
+//                    Button(action: {
+//                        showProviders.toggle()
+//                    }, label: {
+//                        Image(systemName: "tv.circle.fill")
+//                        Text("Whatch Providers")
+//                    })
+//                    .buttonStyle(.borderedProminent)
+//                    .frame(width: 100, height: 100)
+//                    .background(.white)
+//                    .clipShape(Circle())
+////                    .overlay(
+////                          RoundedRectangle(cornerRadius: 10)
+////                            .stroke(.gray, lineWidth: 1)
+////                        )
+//                }
                     
-                VStack {
+                VStack(alignment: .leading) {
                     Text(vm.selectedMovie.originalTitle)
                         .font(.title2)
                         .bold()
