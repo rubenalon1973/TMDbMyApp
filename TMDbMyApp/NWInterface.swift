@@ -16,6 +16,8 @@ let imageURLBase = URL(string: "https://image.tmdb.org/t/p/w500")!
 let linkURLBase = URL(string: "https://www.themoviedb.org/movie/")!
 let profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/")!
 
+let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo"
+
 //Extensión con el edpoint de lo que necesitamos
 extension URL {
     static let getPopMovies = mainURL.appending(path: "movie/popular")//para poner el edpoint a la main
@@ -52,6 +54,9 @@ extension URL {
         return profilePathURLBase.appending(path: actor)
     }
     
+    static func getMovieTrailer(id: Int) -> URL {
+        mainURL.appending(path: "movie/\(id)/videos")
+    }
 }
 
 //Extensión con  fx para sacar las funcionalidades q queremos de URLRequest
@@ -66,7 +71,7 @@ extension URLRequest {
 //        para poder elegir post o get
         request.httpMethod = HTTPMethods.get.rawValue
 //        para poder poner el token(siempre probar con "Bearer" delante) y "Authorization"
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         
         return request
     }
@@ -75,14 +80,21 @@ extension URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get.rawValue
 //        para poder poner el token(siempre probar con "Bearer" delante) y "Authorization"
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         return request
     }
     
     static func actorRequest(url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
+    static func movieVideoRequest(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethods.get.rawValue
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         return request
     }
 }

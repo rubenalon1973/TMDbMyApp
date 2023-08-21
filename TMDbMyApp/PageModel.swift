@@ -13,5 +13,5 @@ struct PageModel: Identifiable {
     let title: String
     let description: String
     let image: String
-    let tag: Int//permite al pager saber en q pag está
+    let tag: Int//permite al pager saber en q pag está, es un identificador
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8002C56A2A9349B300DC02EB /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8002C5692A9349B300DC02EB /* YouTubePlayer.swift */; };
+		8002C56C2A9353F200DC02EB /* MoviesVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8002C56B2A9353F200DC02EB /* MoviesVideos.swift */; };
 		800BFB1D2A7B8EED003F9AFE /* TMDbMyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFB1C2A7B8EED003F9AFE /* TMDbMyAppApp.swift */; };
 		800BFB1F2A7B8EED003F9AFE /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BFB1E2A7B8EED003F9AFE /* MoviesView.swift */; };
 		800BFB212A7B8EEF003F9AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800BFB202A7B8EEF003F9AFE /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8002C5692A9349B300DC02EB /* YouTubePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
+		8002C56B2A9353F200DC02EB /* MoviesVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVideos.swift; sourceTree = "<group>"; };
 		800BFB192A7B8EED003F9AFE /* TMDbMyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDbMyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800BFB1C2A7B8EED003F9AFE /* TMDbMyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbMyAppApp.swift; sourceTree = "<group>"; };
 		800BFB1E2A7B8EED003F9AFE /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			children = (
 				800BFB2E2A7B94A7003F9AFE /* MoviesDTO.swift */,
 				800BFB302A7B9B51003F9AFE /* Movie.swift */,
+				8002C56B2A9353F200DC02EB /* MoviesVideos.swift */,
 				80824BDD2A84EC2500603EBF /* CastMemberDTO.swift */,
 				80824BDF2A84ED6700603EBF /* CastMember.swift */,
 				8071D3112A8E4413006AE481 /* ActorDTO.swift */,
@@ -252,6 +257,7 @@
 				80D2876E2A82339800675AFB /* MovieRankView.swift */,
 				80824BE32A861DCE00603EBF /* ActorPosterView.swift */,
 				80D287752A8377F300675AFB /* CustomAlertView.swift */,
+				8002C5692A9349B300DC02EB /* YouTubePlayer.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				800BFB1D2A7B8EED003F9AFE /* TMDbMyAppApp.swift in Sources */,
 				80824BDE2A84EC2500603EBF /* CastMemberDTO.swift in Sources */,
 				8071D3212A90BEE8006AE481 /* PageModel.swift in Sources */,
+				8002C56C2A9353F200DC02EB /* MoviesVideos.swift in Sources */,
 				80567E902A7CE91D00A62EC6 /* MoviesVM.swift in Sources */,
 				80824BE42A861DCE00603EBF /* ActorPosterView.swift in Sources */,
 				800BFB3A2A7BA14F003F9AFE /* URLSessionExtension.swift in Sources */,
@@ -354,6 +361,7 @@
 				8071D31A2A8E9DE4006AE481 /* ActorDetailVM.swift in Sources */,
 				80567E942A7CF1D800A62EC6 /* MovieTestData.swift in Sources */,
 				800BFB312A7B9B51003F9AFE /* Movie.swift in Sources */,
+				8002C56A2A9349B300DC02EB /* YouTubePlayer.swift in Sources */,
 				80D287722A823EEC00675AFB /* DateFormattedExtension.swift in Sources */,
 				800BFB3E2A7BAFBC003F9AFE /* NWInterface.swift in Sources */,
 				8071D3162A8E8EDB006AE481 /* Actor.swift in Sources */,

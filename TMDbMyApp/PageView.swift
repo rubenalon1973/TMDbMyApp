@@ -25,6 +25,6 @@ struct PageView: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(page: PageModel(title: "caca", description: " tu caca", image: "ice1", tag: 0))
+        PageView(page: PageModel(title: "Title", description: "Description", image: "cineApp", tag: 0))
     }
 }

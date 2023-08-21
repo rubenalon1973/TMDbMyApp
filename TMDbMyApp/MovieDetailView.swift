@@ -11,6 +11,7 @@ import SwiftUI
 struct MovieDetailView: View {
     @ObservedObject var vm: MovieDetailVM
     @State var showProviders = false
+    @State var showTrailer = false
     
     var body: some View {
         ScrollView {
@@ -35,6 +36,14 @@ struct MovieDetailView: View {
                         .font(.title3)
                 }
                 .padding()
+//
+                Button {
+                    showTrailer.toggle()
+                } label: {
+                   Text("Trailer")
+                    Image(systemName: "play")
+                }
+
 //                MARK: Para ver en que plataformas está
                 Button(action: {
                     showProviders.toggle()
@@ -49,8 +58,8 @@ struct MovieDetailView: View {
                         .bold()
                         .padding(8)
                     Text(vm.selectedMovie.overview)
-                        .padding()
-                    
+                        .foregroundColor(.gray)
+                        .padding()                    
                 }
                 .padding()
                 
@@ -67,7 +76,7 @@ struct MovieDetailView: View {
                         vm.loadMember(id: vm.selectedMovie.id)
                     })
                 }
-                .padding(.bottom, 80)
+                .padding(.bottom, 120)
             }
         }
         .toolbar {
@@ -76,9 +85,11 @@ struct MovieDetailView: View {
             }
         }
         .ignoresSafeArea(.all)
-        .sheet(isPresented: $showProviders, content: {
-            Text("Providers")
-                .presentationDetents([.medium])
+        .sheet(isPresented: $showTrailer, content: {
+            if let trailer = vm.oneTrailer,
+               let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
+                YouTubePlayer(url: url)
+            }
         })
         
         .navigationDestination(for: CastMember.self) { member in

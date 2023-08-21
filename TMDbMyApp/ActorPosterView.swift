@@ -31,12 +31,17 @@ struct ActorPosterView: View {
                 }
             }
             
-            VStack {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(actor.name)
+//                    .font(.title2)
+//                    .padding(8)
                 Text(actor.character ?? "")
+                    
             }
-            .padding(8)
+            .padding()
+//            .frame(maxHeight: 150)
         }
+        .frame(maxWidth: 150)
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.clear)

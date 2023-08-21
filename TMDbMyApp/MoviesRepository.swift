@@ -17,6 +17,7 @@ protocol MovieRepositoryProtocol {
     func getTopRatedMovies(page: Int) async throws -> [Movie]
     func getUpcomingMovies(page: Int) async throws -> [Movie]
     func getActorDetail(id: Int) async throws -> Actor
+    func getMoviesVideos(id: Int) async throws -> [MoviesVideos]
 }
 
 final class MoviesRepository: MovieRepositoryProtocol {
@@ -47,21 +48,34 @@ final class MoviesRepository: MovieRepositoryProtocol {
     }
     
     func getNowPlayingMovies(page: Int) async throws -> [Movie] {
+        print("entra getNowPlayingMovies api")
+
         return try await getJSON(urlRequest: .MoviesRequest(url: .getPlayingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
         }
     }
     
     func getTopRatedMovies(page: Int) async throws -> [Movie] {
+        print("entra getTopRatedMovies api")
+
         return try await getJSON(urlRequest: .MoviesRequest(url: .getTopRatedMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
         }
     }
     
     func getUpcomingMovies(page: Int) async throws -> [Movie] {
-        return try await getJSON(urlRequest: .MoviesRequest(url: .getUpcomingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel()
-        }
+        print("entra getUpcomingMovies api")
+
+        return try await getJSON(urlRequest: .MoviesRequest(url: .getUpcomingMovies, page: page), type: MoviesResult.self).results.map{ $0.mapToModel() }
     }
     
     func getActorDetail(id: Int) async throws -> Actor {
-        try await getJSON(urlRequest: .actorRequest(url: .getActorDetail(id: id)), type: ActorDTO.self).mapToModel()
+        print("entra getActorDetail api")
+
+        return try await getJSON(urlRequest: .actorRequest(url: .getActorDetail(id: id)), type: ActorDTO.self).mapToModel()
+    }
+    
+    func getMoviesVideos(id: Int) async throws -> [MoviesVideos] {
+        print("entra getMoviesVideos api")
+
+        return try await getJSON(urlRequest: .movieVideoRequest(url: .getMovieTrailer(id: id)), type: MoviesVideosResultsDTO.self).results.map{ $0.mapToModel() }
     }
 }

@@ -19,13 +19,13 @@ struct ActorDetailView: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 350)
+                            .frame(width: 400)
                             .cornerRadius(8)
                     } placeholder: {
                         Image(systemName: "star")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 350)
+                            .frame(width: 400)
                             .cornerRadius(8)
                     }
                     
@@ -33,29 +33,30 @@ struct ActorDetailView: View {
                         Text("Name:")
                             .bold()
                         Text(actor.name)
-                        
+                            .foregroundColor(.gray)
                         Text("Birthday")
                             .bold()
                         Text(actor.birthday)
-                        
+                            .foregroundColor(.gray)
                         Text("Place of birth")
                             .bold()
                         Text(actor.placeOfBirth)
-                        
+                            .foregroundColor(.gray)
                         Text("Popularty")
                             .bold()
                         Text(String(actor.popularity))
-                        
+                            .foregroundColor(.gray)
                         Text("Biography:")
                             .bold()
                         Text(actor.biography)
+                            .foregroundColor(.gray)
                     }
+//                    .frame(maxWidth: .infinity)
                     .padding(10)
                 }
             }
-            
         }
-        .padding(.bottom, 80)
+        .padding(.bottom, 120)//para salvar toda la vista con el los tab de abajo de la vista principal
         .ignoresSafeArea()
     }
 }

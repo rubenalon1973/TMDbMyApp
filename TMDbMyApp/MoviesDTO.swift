@@ -1,5 +1,5 @@
 //
-//  PopMovieDTO.swift
+//  MovieDTO.swift
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 3/8/23.
@@ -13,7 +13,7 @@ struct MoviesResult: Codable {
     let page: Int
     let totalPages: Int
     let totalResults: Int
-    let results: [PopMovieDTO]
+    let results: [MovieDTO]
     
     enum CodingKeys: String, CodingKey {
         case page, results //un case con dos case sep x coma
@@ -23,7 +23,7 @@ struct MoviesResult: Codable {
 }
 //MARK: "DTO" Domain Transfer Object: Modelo de API
 //cogemos lo que nos interesa, los q vamos a utilizar
-struct PopMovieDTO: Codable {
+struct MovieDTO: Codable {
     let id: Int
     let originalTitle: String
     let overview: String
@@ -40,8 +40,25 @@ struct PopMovieDTO: Codable {
     }
 }
 
+struct MoviesVideosResultsDTO: Codable {
+    let results: [MoviesVideosDTO]
+}
+
+struct MoviesVideosDTO: Codable {
+    let key: String
+    let type: String
+    let official: Bool
+}
+
+extension MoviesVideosDTO {
+    func mapToModel() -> MoviesVideos {
+        MoviesVideos(key: key, type: type, official: official)
+    }
+}
+
+
 //fx para mapear a nuestro modelo, en Movie en la fx los parámetros son de DTO
-extension PopMovieDTO {
+extension MovieDTO {
     func mapToModel() -> Movie {
         Movie(id: id, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath)
     }

@@ -74,6 +74,10 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
         
         return try decoder.decode(ActorDTO.self, from: data).mapToModel()
     }
+    
+    func getMoviesVideos(id: Int) async throws -> [MoviesVideos] {
+        []
+    }
 }
 //creamos esta ext de moviesvm para poder elegir aquí la de test, y la creamos para no tener que poner todo en la preview y solo poner la prop de moviesvm preview, la creamos aqui para q no suba a produccion
 extension MoviesVM {
@@ -104,7 +108,7 @@ extension CastMember {
         id: 550,
         name: "Edward Norton",
         profilePath: "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg",
-        character: "The Narrator"
+        character: "The Narrator xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     )
 }
 
