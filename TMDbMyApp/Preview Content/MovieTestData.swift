@@ -8,6 +8,7 @@
 import Foundation
 
 final class MovieRepositoryTest: MovieRepositoryProtocol {
+    
     let urlMovie = Bundle.main.url(forResource: "MovieTest", withExtension: "json")!
     let urlMember = Bundle.main.url(forResource: "CastMemberTest", withExtension: "json")!
     let urlActor = Bundle.main.url(forResource: "ActorTest", withExtension: "json")!
@@ -74,9 +75,13 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
         
         return try decoder.decode(ActorDTO.self, from: data).mapToModel()
     }
-    
+//    TODO: Acabar
     func getMoviesVideos(id: Int) async throws -> [MoviesVideos] {
         []
+    }
+    //    TODO: Acabar
+    func getWatchProviders(id: Int) async throws -> WatchProvidersResponse {
+        WatchProvidersResponse(id: 0, results: [:])
     }
 }
 //creamos esta ext de moviesvm para poder elegir aquí la de test, y la creamos para no tener que poner todo en la preview y solo poner la prop de moviesvm preview, la creamos aqui para q no suba a produccion

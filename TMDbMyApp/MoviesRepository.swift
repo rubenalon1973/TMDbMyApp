@@ -18,6 +18,7 @@ protocol MovieRepositoryProtocol {
     func getUpcomingMovies(page: Int) async throws -> [Movie]
     func getActorDetail(id: Int) async throws -> Actor
     func getMoviesVideos(id: Int) async throws -> [MoviesVideos]
+    func getWatchProviders(id: Int) async throws -> WatchProvidersResponse
 }
 
 final class MoviesRepository: MovieRepositoryProtocol {
@@ -78,4 +79,10 @@ final class MoviesRepository: MovieRepositoryProtocol {
 
         return try await getJSON(urlRequest: .movieVideoRequest(url: .getMovieTrailer(id: id)), type: MoviesVideosResultsDTO.self).results.map{ $0.mapToModel() }
     }
+    
+    func getWatchProviders(id: Int) async throws -> WatchProvidersResponse {
+        
+        try await getJSON(urlRequest: .providerRequest(url: .getWatchProviders(id: id)), type: WatchProvidersResponse.self)
+    }
+    
 }

@@ -57,6 +57,10 @@ extension URL {
     static func getMovieTrailer(id: Int) -> URL {
         mainURL.appending(path: "movie/\(id)/videos")
     }
+    
+    static func getWatchProviders(id: Int) -> URL {
+        mainURL.appending(path: "movie/\(id)/watch/providers")
+    }
 }
 
 //Extensión con  fx para sacar las funcionalidades q queremos de URLRequest
@@ -92,6 +96,13 @@ extension URLRequest {
     }
     
     static func movieVideoRequest(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethods.get.rawValue
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
+    static func providerRequest(url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get.rawValue
         request.addValue(token, forHTTPHeaderField: "Authorization")
