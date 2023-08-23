@@ -130,5 +130,7 @@ extension Actor {
     static let emptyActor = Actor(biography: "", birthday: "", deathday: "", id: 12835, name: "", placeOfBirth: "", popularity: 0, profilePath: "")
 }
 
-
+extension CustomAlertView {
+    static let testAlert = CustomAlertView(title: "Something Went Wrong", message: "Cannot Load Data", buttonText: "Try again", action: {})
+}
 

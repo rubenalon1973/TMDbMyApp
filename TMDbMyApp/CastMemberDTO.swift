@@ -18,7 +18,7 @@ struct CastMemberDTO: Codable, Identifiable, Hashable {
     let id: Int
     let name: String
     let profilePath: String?
-    let character: String?
+    let character: String
     
     enum CodingKeys: String, CodingKey {
         case id, name, character

@@ -67,24 +67,26 @@ final class MoviesVM: ObservableObject {
                 switch moviesType {
                 case .popular:
                     movies += try await repository.getPopMovies(page: page)//+= para q no se borren las anteriores
-                    isLoading = false
+                    isLoading = false//se va la flor y vemos la vista
                 case .nowPlay:
                     movies += try await repository.getNowPlayingMovies(page: page)//+= para q no se borren las anteriores
-                    isLoading = false
+                    isLoading = false//se va la flor y vemos la vista
                 case .topRated:
                     movies += try await repository.getTopRatedMovies(page: page)
-                    isLoading = false
+                    isLoading = false//se va la flor y vemos la vista
                 case .upcoming:
                     movies += try await repository.getUpcomingMovies(page: page)
-                    isLoading = false
+                    isLoading = false//se va la flor y vemos la vista
                 }
             } catch let error as NetworkError {
                 moviesListState = .error
                 errorMessage = error.description
                 movies = []
+                isLoading = false//para q se valla la flor y nos salga el alert si la llamada nos da error(la URL estuviera mal p.ej)
             } catch {
                 moviesListState = .error
                 movies = []
+                isLoading = false//para q se valla la flor y nos salga el alert si la llamada nos da error(la URL estuviera mal p.ej)
             }
         }
     }

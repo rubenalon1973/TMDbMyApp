@@ -12,6 +12,7 @@ struct MoviesGridView: View {
     //    array(rep:, count:) repite algo x veces
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     @ObservedObject var vm: MoviesVM
+    @State var progress = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -20,7 +21,10 @@ struct MoviesGridView: View {
                     NavigationLink(value: movie) {
                         MoviePosterView(movie: movie, size: .grid)
                             .overlay(alignment: .bottomTrailing) {
-                                MovieRankView(movie: movie)
+                                MovieRankView(movie: movie, progress: $progress)
+                                    .onAppear {
+                                        progress = true
+                                    }
                             }
                             .onAppear {
                                 vm.loadNextPage(movie: movie)

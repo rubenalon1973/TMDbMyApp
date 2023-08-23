@@ -33,16 +33,14 @@ struct MoviesView: View {
             }
         }
         .overlay {
-            if vm.isLoading {
+            if vm.isLoading {//salta la florecilla de carga,  q es una vista
                 ZStack {
-                    Color.blue
+                    Color.gray
                     ProgressView()
                         .controlSize(.large)
                 }
+                .ignoresSafeArea()
             }
-        }
-        .refreshable {//refresca la view
-            vm.loadMovies()
         }
     }
 }

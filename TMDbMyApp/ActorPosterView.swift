@@ -34,7 +34,7 @@ struct ActorPosterView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(actor.name)
                     .frame(width: 150, height: .none)
-                Text(actor.character ?? "")
+                Text(actor.character)
                     .frame(width: 150, height: .none)
             }
             .padding()
@@ -42,7 +42,7 @@ struct ActorPosterView: View {
         .frame(maxWidth: 150)
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(.clear)
+                .fill(.clear)//color del fondo, este es transp
                 .shadow(radius: 10)
         }
     }

@@ -10,16 +10,17 @@ import SwiftUI
 struct PagerView: View {
     @State private var pageIndex = 0
     @Binding var firstLaunch: Bool
-    
     let dotAppearience = UIPageControl.appearance()//para personalizar la apariencia de los puntos los cuales indican en q page estamos del Screen
+    var pagesReal = PageModel.pagesReal
     
-//    TODO: - Personalizar con mis textos e imágenes
-    var pagesReal: [PageModel] =
-             [
-                PageModel(title: "Explora un Mundo de Películas", description: "Sumérgete en un vasto océano de películas, desde clásicos atemporales hasta los últimos éxitos de taquilla. ¡Descubre historias que te emocionarán y te cautivarán!", image: "cineApp", tag: 0),
-                PageModel(title:  "Encuentra tus Favoritas", description: "Explora y busca tus películas favoritas utilizando nuestras herramientas de búsqueda avanzada. Marca las películas que te encantan y crea tu propia lista personalizada.", image: "cineApp2", tag: 1),
-                PageModel(title:  "Mantente al Día", description: "No te pierdas nunca más una nueva película. Nuestra aplicación te mantendrá informado sobre los próximos lanzamientos y te proporcionará detalles exclusivos directamente de The Movie DB.", image: "cineApp3", tag: 2)
-             ]
+    
+//    MARK: Trasladado a PageModel
+//    var pagesReal: [PageModel] =
+//             [
+//                PageModel(title: "Explora un Mundo de Películas", description: "Sumérgete en un vasto océano de películas, desde clásicos atemporales hasta los últimos éxitos de taquilla. ¡Descubre historias que te emocionarán y te cautivarán!", image: "cineApp", tag: 0),
+//                PageModel(title:  "Encuentra tus Favoritas", description: "Explora y busca tus películas favoritas utilizando nuestras herramientas de búsqueda avanzada. Marca las películas que te encantan y crea tu propia lista personalizada.", image: "cineApp2", tag: 1),
+//                PageModel(title:  "Mantente al Día", description: "No te pierdas nunca más una nueva película. Nuestra aplicación te mantendrá informado sobre los próximos lanzamientos y te proporcionará detalles exclusivos directamente de The Movie DB.", image: "cineApp3", tag: 2)
+//             ]
     
     var body: some View {
         

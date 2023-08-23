@@ -162,8 +162,8 @@
 				8071D30D2A88C5E8006AE481 /* MoviesHomeView.swift */,
 				800BFB1E2A7B8EED003F9AFE /* MoviesView.swift */,
 				8084E1442A87713E001BDCF7 /* MoviesListView.swift */,
-				80D287772A838DCC00675AFB /* MovieDetailView.swift */,
 				8084E1462A8773A1001BDCF7 /* MoviesGridView.swift */,
+				80D287772A838DCC00675AFB /* MovieDetailView.swift */,
 				8071D3172A8E997E006AE481 /* ActorDetailView.swift */,
 				80D2876B2A8230E200675AFB /* Components */,
 			);

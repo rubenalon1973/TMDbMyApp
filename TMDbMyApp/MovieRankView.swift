@@ -17,6 +17,8 @@ enum VoteRankViewSize {
 struct MovieRankView: View {
     let movie: Movie
     var size: VoteRankViewSize = .small
+    @Binding var progress: Bool
+    
     
     var body: some View {
         Text(movie.rank)
@@ -30,10 +32,11 @@ struct MovieRankView: View {
             }
             .background {
                 Circle()
-                    .trim(from: 0.0, to: movie.voteAverage / 10)
+                    .trim(from: 0.0, to: progress ? (movie.voteAverage / 10) : 0)
                     .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
                     .fill(movie.voteAverage > 8 ? Color.green : Color.red)
                     .rotationEffect(.degrees(-90))
+                    .animation(.easeInOut(duration: 2), value: progress)
             }
             .background {
                 Circle()
@@ -46,6 +49,6 @@ struct MovieRankView: View {
 
 struct MovieRankView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieRankView(movie: .testMovieDetail)
+        MovieRankView(movie: .testMovieDetail, progress: .constant(true))
     }
 }

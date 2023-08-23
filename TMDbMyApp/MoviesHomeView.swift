@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoviesHomeView: View {
-    @ObservedObject var popVM = MoviesVM()
+    @ObservedObject var popVM = MoviesVM(movieType: .popular)
     @ObservedObject var nowPlayVM = MoviesVM(movieType: .nowPlay)
     @ObservedObject var topRatedVM = MoviesVM(movieType: .topRated)
     @ObservedObject var upcomingVM = MoviesVM(movieType: .upcoming)
@@ -31,11 +31,12 @@ struct MoviesHomeView: View {
                     Label("Upcoming", systemImage: "calendar")
                 }
         }
+        .tint(.green)//cambia color de iconos del tab, grid y title en navegación
     }
 }
 
 struct MoviesHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesHomeView(popVM: .previewMovie, nowPlayVM: .previewMovie, topRatedVM: .previewMovie, upcomingVM: .previewMovie)
+        MoviesHomeView()
     }
 }

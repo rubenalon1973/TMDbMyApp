@@ -17,13 +17,20 @@ struct TMDbMyAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MoviesHomeView()
-                .opacity(firstLaunch ? 0 : 1)//para q no aparezca esta view en la 1ª carga de la app
-                .overlay {
-                    if firstLaunch {//no hace falta comparar con == si es true, pq la 1ª cond de if siempre es tru(si queremos verificar q es false pondríamos !=)
-                        PagerView(firstLaunch: $firstLaunch)
-                    }//si quisieramos otra acción con el false pondríamos el else
-                }
+            if firstLaunch {//no hace falta comparar con == si es true, pq la 1ª cond de if siempre es tru(si queremos verificar q es false pondríamos !=)
+                PagerView(firstLaunch: $firstLaunch)
+            } else {
+                MoviesHomeView()
+            }
+            
+//            TODO: Queda pdte el hacer una animación del WellcomeScream, hemos arreglado lo de las llamadas repetidas
+//            MoviesHomeView()
+////            aunque es 0 la opacidad, hace las llamadas a red, y luego al continuar a la app las hace otra vez
+//                .opacity(firstLaunch ? 0 : 1)//para q no aparezca esta view en la 1ª carga de la app
+//                .animation(.easeOut, value: firstLaunch)
+//                .overlay {
+//
+//                }
         }
     }
 }

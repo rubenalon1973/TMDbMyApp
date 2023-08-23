@@ -12,7 +12,7 @@ struct CustomAlertView: View {
     let title: String
     let message: String
     let buttonText: String
-    let action: () -> Void
+    let action: () -> Void//es un closure(sin implementación), al llamar a la prop se puede poner la que quieras, este no coge ni devuelve nada, le pones la implementación que necesites(mirar donde se llame al CustomAlertView)
     
     var body: some View {
         VStack {
@@ -20,6 +20,7 @@ struct CustomAlertView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40)
+                .foregroundColor(.red)
             Text(title)
                 .font(.body)
                 .bold()
@@ -44,6 +45,6 @@ struct CustomAlertView: View {
 
 struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlertView(title: "Something Went Wrong", message: "Cannot Load Data", buttonText: "Try again", action: {})
+        CustomAlertView.testAlert//creado en MovietestData
     }
 }
