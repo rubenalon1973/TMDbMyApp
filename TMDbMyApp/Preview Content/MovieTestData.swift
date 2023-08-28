@@ -13,17 +13,17 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
     let urlMember = Bundle.main.url(forResource: "CastMemberTest", withExtension: "json")!
     let urlActor = Bundle.main.url(forResource: "ActorTest", withExtension: "json")!
     
-//    fx para tirar de datos locales de test para PopMovies
+    //    fx para tirar de datos locales de test para PopMovies
     func getPopMovies(page: Int = 1) async throws -> [Movie] {
         //        creamos inst tb aquí para formatear la fecha del modelotest
         print("entra por getpopmovies test")
-
+        
         let data = try Data(contentsOf: urlMovie)
         print("entra por data test")
-
+        
         let decoder = JSONDecoder()
         print("entra por decoder test")
-
+        
         //        estrategia de decode de la fecha para darle formato deseado en preview
         decoder.dateDecodingStrategy = .formatted(.dateFormat)
         
@@ -35,22 +35,22 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
         
         let data = try Data(contentsOf: urlMember)
         print("entra por data test")
-
+        
         let decoder = JSONDecoder()
         print("entra por decoder test")
-
+        
         return try decoder.decode(CreditResult.self, from: data).cast.map { $0.mapToModel() }
     }
     
     func getNowPlayingMovies(page: Int = 1) async throws -> [Movie] {
         print("entra por getNowPlayingMovies test")
-
+        
         let data = try Data(contentsOf: urlMovie)
         print("entra por data test")
-
+        
         let decoder = JSONDecoder()
         print("entra por decoder test")
-
+        
         //        estrategia de decode de la fecha para darle formato deseado en preview
         decoder.dateDecodingStrategy = .formatted(.dateFormat)
         
@@ -75,13 +75,13 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
         
         return try decoder.decode(ActorDTO.self, from: data).mapToModel()
     }
-//    TODO: Acabar
+    //    TODO: Acabar
     func getMoviesVideos(id: Int) async throws -> [MoviesVideos] {
         []
     }
     //    TODO: Acabar
     func getWatchProviders(id: Int) async throws -> WatchProvidersResponse {
-        WatchProvidersResponse(id: 0, results: [:])
+        WatchProvidersResponseDTO(id: 0, results: [:]).mapToModel()
     }
 }
 //creamos esta ext de moviesvm para poder elegir aquí la de test, y la creamos para no tener que poner todo en la preview y solo poner la prop de moviesvm preview, la creamos aqui para q no suba a produccion
@@ -94,17 +94,18 @@ extension MovieDetailVM {
 }
 
 extension ActorDetailVM {
-//    static let previewActor = ActorDetailVM(repository: MovieRepositoryTest(), selectedActor: .testActorDetail)
+    //    static let previewActor = ActorDetailVM(repository: MovieRepositoryTest(), selectedActor: .testActorDetail)
     static let previewCast = ActorDetailVM(repository: MovieRepositoryTest(), castMember: .testMember)
 }
 
 extension Movie {
     static let testMovieDetail = Movie(id: 29292,
-                                 originalTitle: "Transformers: Rise of the Beasts",
-                                 overview: "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
-                                 releaseDate: DateFormatter.dateFormat.date(from: "2014-11-05")!,
-                                 voteAverage: 8.5,
-                                 posterPath: "/gPbM0MK8CP8A174rmUwGsADNYKD.jpg")
+                                       title: "Transformers: Rise of the Beasts",
+                                       originalTitle: "Transformers: Rise of the Beasts",
+                                       overview: "When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth.",
+                                       releaseDate: DateFormatter.dateFormat.date(from: "2014-11-05")!,
+                                       voteAverage: 8.5,
+                                       posterPath: "/gPbM0MK8CP8A174rmUwGsADNYKD.jpg")
 }
 //hemos formateado la fecha aquí directx cogiendo de helpers
 
@@ -129,6 +130,11 @@ extension Actor {
     
     static let emptyActor = Actor(biography: "", birthday: "", deathday: "", id: 12835, name: "", placeOfBirth: "", popularity: 0, profilePath: "")
 }
+
+//extension WatchProvider {
+//    static let testProvider = WatchProvider(link: "https://www.themoviedb.org/movie/298618-the-flash/watch?locale=ES",
+//                                            flatRate: logoPath: "/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg", rent: <#T##[WatchProviderItem]?#>, buy: <#T##[WatchProviderItem]?#>)
+//}
 
 extension CustomAlertView {
     static let testAlert = CustomAlertView(title: "Something Went Wrong", message: "Cannot Load Data", buttonText: "Try again", action: {})

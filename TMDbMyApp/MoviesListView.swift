@@ -13,10 +13,12 @@ struct MoviesListView: View {
     var type: GetMoviesType//para pasarle .Popular, .Playing, TopRates o Upcoming
     
     var body: some View {
+//        TODO: Probar a quitar el NavigationStack del movieView
+//        aquí estaría NavigationStack, pero lo tenemos en el MovieView para que nos navegue en el list y en el grid y no crear dos pilas de navegación
         //el list hace el foreach
         List(vm.movies) { movie in
             NavigationLink(value: movie) {
-                MovieCell(movie: movie)
+                MovieCell(movie: movie, listType: .list)
                     .onAppear {//quitamos () para q antes de aparecer en la vista hace la acción dentro de las llaves
                         vm.loadNextPage(movie: movie)
                     }
@@ -32,7 +34,8 @@ struct MoviesListView: View {
             vm.moviesType = type
         }
         .navigationDestination(for: Movie.self, destination: { movie in
-            MovieDetailView(vm: MovieDetailVM(selectedMovie: movie))
+//            si no llamamos al repository en el MovieDetailVM, nos haría las llamadas a la API al navegar en la preview
+            MovieDetailView(vm: MovieDetailVM(repository: vm.repository, selectedMovie: movie))
         })
         .navigationTitle(vm.titleView)//elige title el vm con un switch de un enum existente
         .toolbar {

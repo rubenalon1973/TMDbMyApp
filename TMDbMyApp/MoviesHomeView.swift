@@ -31,7 +31,7 @@ struct MoviesHomeView: View {
                     Label("Upcoming", systemImage: "calendar")
                 }
         }
-        .tint(.green)//cambia color de iconos del tab, grid y title en navegación
+        .tint(.blue)//cambia color de iconos del tab, grid y title en navegación
     }
 }
 

@@ -7,32 +7,44 @@
 
 import SwiftUI
 
+//para elegir como se pinte
+enum CellType {
+    case list
+    case grid
+}
+
 //MARK: - View diseño de la cell
 struct MovieCell: View {
     let movie: Movie
-    @State var progress = false//carga el círculo al arrancar progresivamente, la línea
+    @State var listType: CellType
     
     var body: some View {
-        HStack {
-            MoviePosterView(movie: movie, size: .poster)
-                .overlay(alignment: .bottomTrailing) {//lo contrario a background, es para poner elementos encima de una vista, en este caso abajo a la drcha
-                    MovieRankView(movie: movie, progress: $progress)//ponemos el círculo de los votos
-                        .onAppear {
-                            progress = true
-                        }
+        switch listType {
+        case .list:
+            HStack {
+                MoviePosterView(movie: movie, size: .poster)
+                    .overlay(alignment: .bottomTrailing) {//lo contrario a background, es para poner elementos encima de una vista, en este caso abajo a la drcha
+                        MovieRankView(movie: movie)//ponemos el círculo de los votos
+                    }
+                VStack(alignment: .leading){
+                    Text(movie.title)
+    //                    .foregroundColor(.gray)
+                        .font(.title2)
+                        .bold()
+                    Text("Year: \(movie.releaseYear)")
+                        .padding(1)
+                        .foregroundColor(.gray)
+                        .bold()
                 }
-            VStack(alignment: .leading){
-                Text(movie.originalTitle)
-//                    .foregroundColor(.gray)
-                    .font(.title2)
-                    .bold()
-                Text("Year: \(movie.releaseYear)")
-                    .padding(1)
-                    .foregroundColor(.gray)
-                    .bold()
+                .padding(10)
             }
-            .padding(10)
+        case .grid:
+            MoviePosterView(movie: movie, size: .grid)
+                .overlay(alignment: .bottomTrailing) {
+                    MovieRankView(movie: movie)
+                }
         }
+        
 //        MARK: También se puede poner en el NavigatiónLink
 //        .frame(maxWidth: 400)
 //        .background {
@@ -46,6 +58,9 @@ struct MovieCell: View {
 struct MovieCell_Previews: PreviewProvider {
     let movie: Movie
     static var previews: some View {
-        MovieCell(movie: .testMovieDetail)
+        VStack {
+            MovieCell(movie: .testMovieDetail, listType: .list)
+            MovieCell(movie: .testMovieDetail, listType: .grid)
+        }
     }
 }

@@ -12,23 +12,17 @@ struct MoviesGridView: View {
     //    array(rep:, count:) repite algo x veces
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     @ObservedObject var vm: MoviesVM
-    @State var progress = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid (columns: columns, spacing: 20){//spacing entre poster vertical
                 ForEach(vm.movies) { movie in
                     NavigationLink(value: movie) {
-                        MoviePosterView(movie: movie, size: .grid)
-                            .overlay(alignment: .bottomTrailing) {
-                                MovieRankView(movie: movie, progress: $progress)
-                                    .onAppear {
-                                        progress = true
-                                    }
-                            }
+                        MovieCell(movie: movie, listType: .grid)
+                    }
                             .onAppear {
                                 vm.loadNextPage(movie: movie)
-                            }
+                            
                     }
                 }
             }

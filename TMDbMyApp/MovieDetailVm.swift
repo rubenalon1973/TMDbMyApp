@@ -59,16 +59,12 @@ final class MovieDetailVM: ObservableObject {
         return providers
     }
     
-    var flatRate: [WatchProviderItem] {
+    var flatRateProviders: [WatchProviderItem] {
         guard let providers = providers?.results["ES"]?.flatRate else { return [] }
         
         return providers
     }
     
-//    TODO: Sacar los iconos de los provider:
-    /*
-     "https://www.themoviedb.org/t/p/original//(provider.logoPath)"
-     */
 //    aquí llamamos a las fx al entrar en detail
     init(repository: MovieRepositoryProtocol = MoviesRepository.shared, selectedMovie: Movie) {
         self.repository = repository
@@ -110,8 +106,6 @@ final class MovieDetailVM: ObservableObject {
             }
         }
     }
-    
-    
 }
 
 

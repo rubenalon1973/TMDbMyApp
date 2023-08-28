@@ -81,8 +81,8 @@ final class MoviesRepository: MovieRepositoryProtocol {
     }
     
     func getWatchProviders(id: Int) async throws -> WatchProvidersResponse {
-        
-        try await getJSON(urlRequest: .providerRequest(url: .getWatchProviders(id: id)), type: WatchProvidersResponse.self)
+        print("entra getWatchProviders api")
+
+        return try await getJSON(urlRequest: .providerRequest(url: .getWatchProviders(id: id)), type: WatchProvidersResponseDTO.self).mapToModel()
     }
-    
 }

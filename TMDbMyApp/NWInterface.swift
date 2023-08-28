@@ -24,7 +24,6 @@ extension URL {
     static let getPlayingMovies = mainURL.appending(path: "movie/now_playing")
     static let getUpcomingMovies = mainURL.appending(path: "movie/upcoming")
     static let getTopRatedMovies = mainURL.appending(path: "movie/top_rated")
-//    static let getActorDetail = mainURL.appending(path: "person")
     
     static func getPosterPath(poster: String) -> URL {//para poner el edpoint del poster de la image de cada peli donde en la view de diseño del poster
         imageURLBase.appending(path: poster)

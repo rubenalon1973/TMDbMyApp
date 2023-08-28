@@ -7,9 +7,10 @@
 
 import Foundation
 
-//mi modelo, para crear campos personalizados q no están en la API
+//mi modelo, para crear campos personalizados q no están en la API, y pq es una buena práctica no trabajar con el modelo de la api
 struct Movie: Codable,Identifiable, Hashable {
     let id: Int
+    let title: String
     let originalTitle: String
     let overview: String
     let releaseDate: Date

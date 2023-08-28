@@ -17,7 +17,7 @@ enum VoteRankViewSize {
 struct MovieRankView: View {
     let movie: Movie
     var size: VoteRankViewSize = .small
-    @Binding var progress: Bool
+    @State var progress = false
     
     
     var body: some View {
@@ -43,12 +43,15 @@ struct MovieRankView: View {
                     .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
                     .fill(Color.gray)
             }
+            .onAppear {
+                progress = true
+            }
             .offset(x: 5, y: 5)//ubicación en esta vista, q es dónde se ubicará donde lo sobrepongamos
     }
 }
 
 struct MovieRankView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieRankView(movie: .testMovieDetail, progress: .constant(true))
+        MovieRankView(movie: .testMovieDetail)
     }
 }

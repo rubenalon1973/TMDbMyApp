@@ -25,109 +25,73 @@ struct MovieDetailView: View {
                             .font(.system(size: 30))
                             .padding(0.5)
                         Text("\(vm.selectedMovie.rank)/10")
-                        Text("\(vm.selectedMovie.releaseYear)")
-                            .font(.title3)
+                        
                     }
                 }
                 .padding()
                 
-                VStack {
-                    ForEach(vm.buyProviders) { provider in
-                        Text(provider.providerName)
-                    }
-                }
-                //                HStack(spacing: 10) {
-                //
-                //                  Button {
-                //
-                //                  } label: {
-                //                    VStack {
-                //                      Image(systemName: "link.circle")
-                //                      Text("Link")
-                //                    }
-                //                    .font(.title2)
-                //                    .frame(width: 100, height: 100)
-                //                  }
-                //                  .buttonStyle(.bordered)
-                //
-                //                  Button {
-                //                      showTrailer.toggle()
-                //                  } label: {
-                //                    VStack {
-                //                      Image(systemName: "play.circle")
-                //                      Text("Trailer")
-                //                    }
-                //                    .font(.title2)
-                //                    .frame(width: 100, height: 100)
-                //                  }
-                //                  .buttonStyle(.bordered)
-                //
-                //                  Button {
-                //
-                //                  } label: {
-                //                    VStack {
-                //                      Image(systemName: "tv.circle")
-                //                      Text("Providers")
-                //                    }
-                //                    .font(.title2)
-                //                    .frame(width: 100, height: 100)
-                //                  }
-                //                  .buttonStyle(.bordered)
-                //                }
-                //                .padding()
-                
-                HStack(spacing: 20) {
-                    Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
-                        Image(systemName: "link.circle.fill")
-                        Text("Show in TMDb")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(width: 100, height: 100)
-                    .background(.white)
-                    .clipShape(Circle())
-                    //                    .overlay(
-                    //                          RoundedRectangle(cornerRadius: 10)
-                    //                            .stroke(.blue, lineWidth: 1)
-                    //                        )
+                VStack(spacing: 20) {
                     Button {
                         showTrailer.toggle()
                     } label: {
                         Image(systemName: "play.circle.fill")
-                        Text("Trailer")
+                        Text("Film Trailer ")
                     }
-                    .buttonStyle(.borderedProminent)
-                    .frame(width: 100, height: 200)
-                    .background(.white)
-                    .clipShape(Circle())
-                    //                    .overlay(
-                    //                          RoundedRectangle(cornerRadius: 10)
-                    //                            .stroke(.gray, lineWidth: 1)
-                    //                        )
-                    //                MARK: Para ver en que plataformas está
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal)
+                    .background(Capsule()
+                        .fill(.blue)
+                        .shadow(radius: 8, y: 10))
+                    
+                    //MARK: Para ver en que plataformas está
                     Button(action: {
                         showProviders.toggle()
                     }, label: {
                         Image(systemName: "tv.circle.fill")
-                        Text("Whatch Providers")
+                        Text("Just Watch ")
                     })
-                    .buttonStyle(.borderedProminent)
-                    .frame(width: 100, height: 100)
-                    .background(.white)
-                    .clipShape(Circle())
-                    //                    .overlay(
-                    //                          RoundedRectangle(cornerRadius: 10)
-                    //                            .stroke(.gray, lineWidth: 1)
-                    //                        )
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal)
+                    .background(Capsule()
+                        .fill(.blue)
+                        .shadow(radius: 8, y: 10))
+                    
+                    Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
+                        Image(systemName: "link.circle.fill")
+                        Text("Website Link")
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal)
+                    .background(Capsule()
+                        .fill(.blue)
+                        .shadow(radius: 8, y: 10))
                 }
+                .padding()
                 
-                VStack(alignment: .leading) {
-                    Text(vm.selectedMovie.originalTitle)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Title:")
                         .font(.title2)
                         .bold()
-                        .padding(8)
+                    Text(vm.selectedMovie.title)
+                        .foregroundColor(.gray)
+                    Text("Original title:")
+                        .font(.title2)
+                        .bold()
+                    Text(vm.selectedMovie.originalTitle)
+                        .foregroundColor(.gray)
+                    Text("Realease year:")
+                        .font(.title2)
+                        .bold()
+                    Text(vm.selectedMovie.releaseYear)
+                        .foregroundColor(.gray)
+                    Text("Overview")
+                        .font(.title2)
+                        .bold()
                     Text(vm.selectedMovie.overview)
                         .foregroundColor(.gray)
-                        .padding()                    
                 }
                 .padding()
                 
@@ -152,14 +116,80 @@ struct MovieDetailView: View {
                 ShareLink("Share", item: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle))
             }
         }
-        .ignoresSafeArea(.all)
+        .overlay(alignment: .top, content: {
+            Rectangle()
+                .fill(.thinMaterial)
+                .frame(height: 95)
+        })
+        .ignoresSafeArea()
+        
         .sheet(isPresented: $showTrailer, content: {
             if let trailer = vm.oneTrailer,
                let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
                 YouTubePlayer(url: url)
             }
         })
-        
+        .sheet(isPresented: $showProviders, content: {
+            VStack(alignment: .leading) {
+                Text("Buy")
+                    .font(.title2)
+                    .bold()
+                HStack {
+                    ForEach(vm.buyProviders) { provider in
+                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        } placeholder: {
+                            Image(systemName: "film")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        }
+                    }
+                }
+
+                Text("Rent")
+                    .font(.title2)
+                    .bold()
+                HStack {
+                    ForEach(vm.rentProviders) { provider in
+                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        } placeholder: {
+                            Image(systemName: "film")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        }
+                    }
+                }
+                
+                Text("Flat rate")
+                    .font(.title2)
+                    .bold()
+                HStack {
+                    ForEach(vm.flatRateProviders) { provider in
+                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        } placeholder: {
+                            Image(systemName: "film")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                        }
+                    }
+                }                
+            }
+            .padding()
+        })
         .navigationDestination(for: CastMember.self) { member in
             ActorDetailView(vm: ActorDetailVM(castMember: member), size: 400)
         }

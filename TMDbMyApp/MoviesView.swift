@@ -12,6 +12,7 @@ struct MoviesView: View {
     @ObservedObject var vm: MoviesVM //no instanciamos para poder llamar a los dos sitios
     
     var body: some View {
+//        tenemos aquí el NavigationStack para que nos sirva para el List y el Grid
         NavigationStack {
             switch vm.moviesListState {
 //            case .isLoading:
