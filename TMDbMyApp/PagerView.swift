@@ -14,26 +14,29 @@ struct PagerView: View {
     var pagesReal = PageModel.pagesReal
     
     var body: some View {
-        //        MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
+        //MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
         TabView(selection: $pageIndex) {
             ForEach(pagesReal) { page in
-                VStack {
+                ZStack {
                     //tenemos en vstack la vista de la page y un condicional para poner un button u otro
                     PageView(page: page)
-                        .foregroundColor(.white)
-                        .lineSpacing(5)
-                        .padding(50)
+                        .onTapGesture {
+                            if page.id == PageModel.pagesReal.last?.id {
+                                firstLaunch = false
+                            } else {
+                                nextPage()
+                            }
+                        }
+                    
                     VStack {
+                        Spacer()
                         if page.id == pagesReal.last?.id {
-                            Spacer()
                             Button {
                                 firstLaunch = false
                             } label: {
                                 Text("Go to app")
                                     .font(.title)
                                     .foregroundColor(.white)
-                                    .background(.gray)
-                                    .cornerRadius(10)
                             }
                             .padding(.bottom, 60)
                         } else {
@@ -43,20 +46,17 @@ struct PagerView: View {
                                 Text("Next")
                                     .font(.title)
                                     .foregroundColor(.white)
-                                    .background(.gray)
-                                    .cornerRadius(10)
                             }
                             .padding(.bottom, 60)
                         }
                     }
                 }
-                
                 .tag(page.tag)//es un indicador de posición, los tag, se pone al final del vstack
             }
         }
         .tabViewStyle(.page)//son los 3 puntitos, le hace paginador al tabview
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .background(.gray)
+        .indexViewStyle(.page(backgroundDisplayMode: .always))//estilo de los marcadores,  y siempre se verá el fondo de los mismos
+        .background(.black)
         //el onAppear se quitan los () y ponemos {} pq es un bloque de cod que vamos a mostrar, pq es un trailing closure
         .onAppear {
             //son la apariencia de los puntitos, de donde está actualx, y de los demás

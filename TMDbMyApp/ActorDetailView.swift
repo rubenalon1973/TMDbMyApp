@@ -52,7 +52,7 @@ struct ActorDetailView: View {
                             .foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)//esto ajusta el ancho del contenido en fx de su relleno, y lo alinea donde quieras
-                    .padding(10)
+                    .padding()
                 }
             }
         }

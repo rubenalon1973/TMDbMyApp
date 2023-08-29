@@ -12,38 +12,40 @@ struct PageView: View {
     @State var offsetY = CGFloat.zero
     
     var body: some View {
-        
-        ZStack{
-            
+        ZStack(alignment: .topLeading) {
             Image(page.image)
                 .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity)
+                .aspectRatio(contentMode: .fill)
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 0,
+                       maxHeight: .infinity)
+                .clipped()
                 .ignoresSafeArea()
             
             // Fondo semi-transparente
             Color.black
-                .opacity(0.7)
+                .opacity(0.3)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text(page.title)
+                    .frame(maxWidth: .infinity)
                     .font(.title)
                     .foregroundColor(.white)
                     .bold()
-                    .padding()
+                    .padding(.horizontal)
                 Text(page.description)
+                    .frame(maxWidth: .infinity)
                     .foregroundColor(.white)
-                    .padding()
-                
+                    .padding(.horizontal)
             }
         }
         .ignoresSafeArea()
     }
-    
 }
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(page: PageModel(title: "Title", description: "Description", image: "cineApp", tag: 0))
+        PageView(page: PageModel(title: "Title", description: "Description", image: "jake-hills-23LET4Hxj_U-unsplash", tag: 0))
     }
 }
