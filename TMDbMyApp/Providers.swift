@@ -86,7 +86,7 @@ struct WatchProvidersResponse: Codable {
 
 struct WatchProvider: Codable {
   let link: String
-  let flatRate: [WatchProviderItem]?
+  let flatrate: [WatchProviderItem]?
   let rent: [WatchProviderItem]?
   let buy: [WatchProviderItem]?
 }

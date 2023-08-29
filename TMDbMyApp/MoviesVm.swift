@@ -11,7 +11,7 @@ import Foundation
 
 //para la florecilla
 enum MovieListState {
-//    case isLoading-> lo borramos pq nos liaba, pq al quitar del init loadmovies, este case no pasaba del isloading y se quedaba en la florecilla
+    //    case isLoading-> lo borramos pq nos liaba, pq al quitar del init loadmovies, este case no pasaba del isloading y se quedaba en la florecilla
     case isLoaded
     case error
 }
@@ -29,14 +29,14 @@ enum GetMoviesType {
 }
 
 final class MoviesVM: ObservableObject {
-//    para poder decirle de que datos tirar. NO inicializamos y x eso tenmos el init
+    //    para poder decirle de que datos tirar. NO inicializamos y x eso tenmos el init
     let repository: MovieRepositoryProtocol
     var page = 1
     
     @Published var movies: [Movie] = []
     @Published var errorMessage = ""
     @Published var isLoading = true//para el loading al iniciar la app
-//    inyección de dependencias, para poder decirle de q repository tirar, por defecto será del real, sino se lo indicamos
+    //    inyección de dependencias, para poder decirle de q repository tirar, por defecto será del real, sino se lo indicamos
     @Published var moviesListState: MovieListState = .isLoaded//para el switch de la vista
     @Published var viewType: MoviesViewType = .list
     @Published var moviesType: GetMoviesType = .popular
@@ -90,21 +90,21 @@ final class MoviesVM: ObservableObject {
             }
         }
     }
-//    cada vez q se exe se resetea la vista q entremos de nuevo
-//    func initialDataValue() {
-//        page = 1
-//        movies = []
-//    }
+    //    cada vez q se exe se resetea la vista q entremos de nuevo
+    //    func initialDataValue() {
+    //        page = 1
+    //        movies = []
+    //    }
     //    para comprobar si estamos en el último item, y sumamos una pag(llamamos a la fx de debajo de esta)
     func loadNextPage(movie: Movie) {
         if isLastItem(movie: movie) {
             page += 1
             loadMovies()
         }
-        }
-//    esto busca la última pos de nuestra lista
+    }
+    //    esto busca la última pos de nuestra lista
     func isLastItem(movie: Movie) -> Bool {
-//        si utilizamos last sobre array puede q no lo haya por eso ?
+        //        si utilizamos last sobre array puede q no lo haya por eso ?
         movies.last?.id == movie.id
     }
 }

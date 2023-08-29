@@ -13,62 +13,59 @@ struct PagerView: View {
     let dotAppearience = UIPageControl.appearance()//para personalizar la apariencia de los puntos los cuales indican en q page estamos del Screen
     var pagesReal = PageModel.pagesReal
     
-    
-//    MARK: Trasladado a PageModel
-//    var pagesReal: [PageModel] =
-//             [
-//                PageModel(title: "Explora un Mundo de Películas", description: "Sumérgete en un vasto océano de películas, desde clásicos atemporales hasta los últimos éxitos de taquilla. ¡Descubre historias que te emocionarán y te cautivarán!", image: "cineApp", tag: 0),
-//                PageModel(title:  "Encuentra tus Favoritas", description: "Explora y busca tus películas favoritas utilizando nuestras herramientas de búsqueda avanzada. Marca las películas que te encantan y crea tu propia lista personalizada.", image: "cineApp2", tag: 1),
-//                PageModel(title:  "Mantente al Día", description: "No te pierdas nunca más una nueva película. Nuestra aplicación te mantendrá informado sobre los próximos lanzamientos y te proporcionará detalles exclusivos directamente de The Movie DB.", image: "cineApp3", tag: 2)
-//             ]
-    
     var body: some View {
-        
-//        MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
+        //        MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
         TabView(selection: $pageIndex) {
             ForEach(pagesReal) { page in
-                VStack(spacing: 30){
-//                    tenemos en vstack la vista de la page y un condicional para poner un button u otro
+                VStack {
+                    //tenemos en vstack la vista de la page y un condicional para poner un button u otro
                     PageView(page: page)
                         .foregroundColor(.white)
-                        .lineSpacing(8)
-                        .padding(5)
-                    if page.id == pagesReal.last?.id {
-                        Button {
-                            firstLaunch = false
-                        } label: {
-                            Text("Go to app")
-                                .font(.title)
-                        }
-                    } else {
-                        Button {
-                            nextPage()
-                        } label: {
-                            Text("Next")
-                                .font(.title)
+                        .lineSpacing(5)
+                        .padding(50)
+                    VStack {
+                        if page.id == pagesReal.last?.id {
+                            Spacer()
+                            Button {
+                                firstLaunch = false
+                            } label: {
+                                Text("Go to app")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                    .background(.gray)
+                                    .cornerRadius(10)
+                            }
+                            .padding(.bottom, 60)
+                        } else {
+                            Button {
+                                nextPage()
+                            } label: {
+                                Text("Next")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                    .background(.gray)
+                                    .cornerRadius(10)
+                            }
+                            .padding(.bottom, 60)
                         }
                     }
-                    
                 }
+                
                 .tag(page.tag)//es un indicador de posición, los tag, se pone al final del vstack
             }
-//            ForEach(1..<5) { num in
-//                Text("\(num)")
-//            }
         }
         .tabViewStyle(.page)//son los 3 puntitos, le hace paginador al tabview
-        .indexViewStyle(.page(backgroundDisplayMode: .always))//MARK: ???????????
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .background(.gray)
-        
-//        el onappear se quitan los () y ponemos {} pq es un bloque de cod que vamos a mostrar, pq es un trailing closure
+        //el onAppear se quitan los () y ponemos {} pq es un bloque de cod que vamos a mostrar, pq es un trailing closure
         .onAppear {
-//            son la apariencia de los puntitos, de donde está actualx, y de los demás
-            dotAppearience.currentPageIndicatorTintColor = .red
-            dotAppearience.pageIndicatorTintColor = .green
+            //son la apariencia de los puntitos, de donde está actualx, y de los demás
+            dotAppearience.currentPageIndicatorTintColor = .black
+            dotAppearience.pageIndicatorTintColor = .white
         }
     }
     
-//    fx para pasar de page en Button
+    //    fx para pasar de page en Button
     func nextPage() {
         pageIndex += 1
     }

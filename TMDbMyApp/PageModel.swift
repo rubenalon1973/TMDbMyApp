@@ -16,14 +16,22 @@ struct PageModel: Identifiable {
     let tag: Int//permite al pager saber en q pag está, es un identificador
 }
 
-//    TODO: - Personalizar con mis textos e imágenes
 extension PageModel {
     
     static var pagesReal: [PageModel] =
     [
-        PageModel(title: "Explora un Mundo de Películas", description: "Sumérgete en un vasto océano de películas, desde clásicos atemporales hasta los últimos éxitos de taquilla. ¡Descubre historias que te emocionarán y te cautivarán!", image: "cineApp", tag: 0),
-        PageModel(title:  "Encuentra tus Favoritas", description: "Explora y busca tus películas favoritas utilizando nuestras herramientas de búsqueda avanzada. Marca las películas que te encantan y crea tu propia lista personalizada.", image: "cineApp2", tag: 1),
-        PageModel(title:  "Mantente al Día", description: "No te pierdas nunca más una nueva película. Nuestra aplicación te mantendrá informado sobre los próximos lanzamientos y te proporcionará detalles exclusivos directamente de The Movie DB.", image: "cineApp3", tag: 2)
+        PageModel(title: "Bienvenido a la magia del cine",
+                  description: "Bienvenido al fascinante mundo del cine. Descubre las últimas novedades, explora los clásicos imprescindibles y sumérgete en la magia del séptimo arte",
+                  image: "cineApp",
+                  tag: 0),
+        PageModel(title:  "El séptimo arte en la palma de tu mano",
+                  description: "Explora y busca tus películas favoritas utilizando nuestras herramientas de búsqueda avanzada. Marca las películas que te encantan y crea tu propia lista personalizada.",
+                  image: "cineApp2",
+                  tag: 1),
+        PageModel(title:  "Explora el fascinante mundo del cine",
+                  description: "No te pierdas nunca más una nueva película. Nuestra aplicación te mantendrá informado sobre los próximos lanzamientos y te proporcionará detalles exclusivos directamente de The Movie DB.",
+                  image: "cineApp3",
+                  tag: 2)
     ]
 }
 

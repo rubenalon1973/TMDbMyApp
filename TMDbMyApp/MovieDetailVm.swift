@@ -7,27 +7,22 @@
 
 import Foundation
 
-enum ProviderType {
-    case buy
-    case rent
-    case flatRate
-}
 
 
 final class MovieDetailVM: ObservableObject {
     let repository: MovieRepositoryProtocol
     let selectedMovie: Movie//para la seleccion de la peli q vamos a ver en detalle
-    var providerType: ProviderType = .buy
+//    var providerType: ProviderType = .buy
     
     @Published var castMember: [CastMember] = []
     @Published var trailers: [MoviesVideos] = []
     @Published var providers: WatchProvidersResponse?//al no ser array le damos valor nil
     
     
-//    MARK: - Variable calculada (computed property) ------------------------------
+    //    MARK: - Variable calculada (computed property) ------------------------------
     /*
      Las principales diferencias entre una variable calculada (computed property) y una función en Swift son:
-
+     
      Sintaxis: una propiedad calculada se declara como parte de una struct/class usando get { } set { }, mientras que una función se declara con la palabra func.
      Llamada: una propiedad calculada se accede como cualquier otra propiedad con ., mientras que una función se llama con ().
      Valor de retorno: una propiedad calculada retorna un valor, una función puede retornar o no un valor.
@@ -40,9 +35,9 @@ final class MovieDetailVM: ObservableObject {
     
     
     var oneTrailer: MoviesVideos? {
-//        trailers.first { trailer in
-//            trailer.official == true
-//        }
+        //        trailers.first { trailer in
+        //            trailer.official == true
+        //        }
         trailers.filter{ $0.type == "Trailer" && $0.official == true }.first
     }
     
@@ -50,7 +45,7 @@ final class MovieDetailVM: ObservableObject {
         guard let providers = providers?.results["ES"]?.buy else { return [] }
         
         return providers
-
+        
     }
     
     var rentProviders: [WatchProviderItem] {
@@ -60,12 +55,12 @@ final class MovieDetailVM: ObservableObject {
     }
     
     var flatRateProviders: [WatchProviderItem] {
-        guard let providers = providers?.results["ES"]?.flatRate else { return [] }
+        guard let providers = providers?.results["ES"]?.flatrate else { return [] }
         
         return providers
     }
     
-//    aquí llamamos a las fx al entrar en detail
+    //    aquí llamamos a las fx al entrar en detail
     init(repository: MovieRepositoryProtocol = MoviesRepository.shared, selectedMovie: Movie) {
         self.repository = repository
         self.selectedMovie = selectedMovie
@@ -105,6 +100,12 @@ final class MovieDetailVM: ObservableObject {
                 providers = nil
             }
         }
+    }
+    
+    func checkEmptyProviders() -> Bool {
+//        MARK: 2 opciones con mismo resultado = true si se cumple la implementación de la fx
+//         buyProviders.isEmpty && rentProviders.isEmpty && flatRateProviders.isEmpty
+        [buyProviders, rentProviders, flatRateProviders].allSatisfy{ $0.isEmpty}
     }
 }
 

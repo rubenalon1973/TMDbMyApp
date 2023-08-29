@@ -131,10 +131,7 @@ extension Actor {
     static let emptyActor = Actor(biography: "", birthday: "", deathday: "", id: 12835, name: "", placeOfBirth: "", popularity: 0, profilePath: "")
 }
 
-//extension WatchProvider {
-//    static let testProvider = WatchProvider(link: "https://www.themoviedb.org/movie/298618-the-flash/watch?locale=ES",
-//                                            flatRate: logoPath: "/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg", rent: <#T##[WatchProviderItem]?#>, buy: <#T##[WatchProviderItem]?#>)
-//}
+
 
 extension CustomAlertView {
     static let testAlert = CustomAlertView(title: "Something Went Wrong", message: "Cannot Load Data", buttonText: "Try again", action: {})

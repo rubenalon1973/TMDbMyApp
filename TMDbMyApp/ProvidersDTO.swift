@@ -15,7 +15,7 @@ struct WatchProvidersResponseDTO: Codable {
 
 struct WatchProviderDTO: Codable {
     let link: String
-    let flatRate: [WatchProviderItemDTO]?
+    let flatrate: [WatchProviderItemDTO]?
     let rent: [WatchProviderItemDTO]?
     let buy: [WatchProviderItemDTO]?
 }
@@ -41,7 +41,7 @@ extension WatchProviderItemDTO {
 extension WatchProviderDTO {
     func mapToModel() -> WatchProvider {
         WatchProvider(link: link,
-                      flatRate: flatRate?.map({ providerItem in
+                      flatrate: flatrate?.map({ providerItem in
             providerItem.mapToModel()
         }),
                       rent: rent?.map{ $0.mapToModel() }, //es lo mismo que la anterior, + inferido

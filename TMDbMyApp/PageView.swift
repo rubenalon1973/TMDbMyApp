@@ -9,18 +9,37 @@ import SwiftUI
 
 struct PageView: View {
     let page: PageModel
+    @State var offsetY = CGFloat.zero
     
     var body: some View {
-        VStack {
+        
+        ZStack{
+            
             Image(page.image)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 200)
-            Text(page.title)
-                .font(.title)
-            Text(page.description)
+                .scaledToFill()
+                .frame(maxWidth: .infinity)
+                .ignoresSafeArea()
+            
+            // Fondo semi-transparente
+            Color.black
+                .opacity(0.7)
+            
+            VStack(alignment: .leading) {
+                Text(page.title)
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding()
+                Text(page.description)
+                    .foregroundColor(.white)
+                    .padding()
+                
+            }
         }
+        .ignoresSafeArea()
     }
+    
 }
 
 struct PageView_Previews: PreviewProvider {

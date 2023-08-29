@@ -35,7 +35,7 @@ struct MovieDetailView: View {
                         showTrailer.toggle()
                     } label: {
                         Image(systemName: "play.circle.fill")
-                        Text("Film Trailer ")
+                        Text("Film Trailer")
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -49,14 +49,16 @@ struct MovieDetailView: View {
                         showProviders.toggle()
                     }, label: {
                         Image(systemName: "tv.circle.fill")
-                        Text("Just Watch ")
+                        Text(vm.checkEmptyProviders() ? "No providers" : "Just watch" )//ternario para cambiar textos
                     })
+                    .disabled(vm.checkEmptyProviders())//desactiva boton si no hay providers
                     .foregroundColor(.white)
                     .padding()
                     .padding(.horizontal)
                     .background(Capsule()
                         .fill(.blue)
                         .shadow(radius: 8, y: 10))
+                    .opacity(vm.checkEmptyProviders() ? 0.3 : 1)//opacidad del boton si no hay providers
                     
                     Link(destination: .getLinkMovies(id: vm.selectedMovie.id, title: vm.selectedMovie.originalTitle)) {
                         Image(systemName: "link.circle.fill")
@@ -131,63 +133,15 @@ struct MovieDetailView: View {
         })
         .sheet(isPresented: $showProviders, content: {
             VStack(alignment: .leading) {
-                Text("Buy")
-                    .font(.title2)
-                    .bold()
-                HStack {
-                    ForEach(vm.buyProviders) { provider in
-                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        } placeholder: {
-                            Image(systemName: "film")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                    }
-                }
-
-                Text("Rent")
-                    .font(.title2)
-                    .bold()
-                HStack {
-                    ForEach(vm.rentProviders) { provider in
-                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        } placeholder: {
-                            Image(systemName: "film")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                    }
-                }
-                
-                Text("Flat rate")
-                    .font(.title2)
-                    .bold()
-                HStack {
-                    ForEach(vm.flatRateProviders) { provider in
-                        AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/original/\(provider.logoPath)")!) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        } placeholder: {
-                            Image(systemName: "film")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                        }
-                    }
-                }                
+                ProvidersView(titleSection: "Buy", providerType: vm.buyProviders)
+                ProvidersView(titleSection: "Rent", providerType: vm.rentProviders)
+                ProvidersView(titleSection: "Flat rate", providerType: vm.flatRateProviders)
             }
+//            propiedades para el .sheet de diseño
+            .frame(maxWidth: .infinity)
+            .presentationDetents([.medium, .large])//puedes estirar desde la mitad hacia arriba
+            .presentationBackground(.thinMaterial)//fondo con opacidad
+            .presentationCornerRadius(70)
             .padding()
         })
         .navigationDestination(for: CastMember.self) { member in
