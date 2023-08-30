@@ -14,6 +14,9 @@ import Foundation
  - Crear barra de "search"
  - Meter las series
  - TODO: Test de la app:
+ - DetailView expandir image al tocarla
+ - Maxland Cine -> mirar en AppStore(Jordi Villaró Ferré) mirar en Linkedin
+ 
  * Comentarios prueba técnica
  Testing. Sobre todo en proyectos de largo recorrido consideramos de gran importancia el testing para asegurar que la implementación es correcta. En muchas ocasiones el resultado parece correcto pero existen errores o problemas en ciertas situaciones, y el testing es importante para detectar y corregir esos casos.
  Tests unitarios. En mi opinión la gran mayoría de tests deberían ser unitarios, y probar la lógica interna de la app. En el caso de usar MVVM se deberían testear los view models, cambiando la implementación de las llamadas de red por respuestas fijas que no realicen ningún side effect. Aquí también entrarían tests de parsing de las respuestas del servidor, pero usando respuestas fijas.

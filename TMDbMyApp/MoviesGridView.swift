@@ -22,7 +22,6 @@ struct MoviesGridView: View {
                     }
                             .onAppear {
                                 vm.loadNextPage(movie: movie)
-                            
                     }
                 }
             }

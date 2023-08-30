@@ -25,7 +25,7 @@ struct PageView: View {
             
             // Fondo semi-transparente
             Color.black
-                .opacity(0.3)
+                .opacity(0.2)
             
             VStack(alignment: .leading, spacing: 16) {
                 Text(page.title)
@@ -40,12 +40,13 @@ struct PageView: View {
                     .padding(.horizontal)
             }
         }
+        .padding()
         .ignoresSafeArea()
     }
 }
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(page: PageModel(title: "Title", description: "Description", image: "jake-hills-23LET4Hxj_U-unsplash", tag: 0))
+        PageView(page: PageModel(title: "Bienvenido a la magia del cine", description: "Bienvenido al fascinante mundo del cine. Descubre las últimas novedades, explora los clásicos imprescindibles y sumérgete en la magia del séptimo arte", image: "jake-hills-23LET4Hxj_U-unsplash", tag: 0))
     }
 }

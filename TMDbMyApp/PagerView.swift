@@ -14,42 +14,33 @@ struct PagerView: View {
     var pagesReal = PageModel.pagesReal
     
     var body: some View {
-        //MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
+        //        MARK: - TabView. Es un contenedor de vistas, q permite crear una interfaz de usuario con pestañas o similar, y cada una con su contenido
         TabView(selection: $pageIndex) {
             ForEach(pagesReal) { page in
                 ZStack {
-                    //tenemos en vstack la vista de la page y un condicional para poner un button u otro
-                    PageView(page: page)
-                        .onTapGesture {
-                            if page.id == PageModel.pagesReal.last?.id {
-                                firstLaunch = false
-                            } else {
-                                nextPage()
-                            }
-                        }
-                    
+                        PageView(page: page)
                     VStack {
                         Spacer()
-                        if page.id == pagesReal.last?.id {
-                            Button {
-                                firstLaunch = false
-                            } label: {
-                                Text("Go to app")
-                                    .font(.title)
-                                    .foregroundColor(.white)
+                            if page.id == pagesReal.last?.id {
+                                Button {
+                                    firstLaunch = false
+                                } label: {
+                                    Text("Go to app")
+                                        .font(.title)
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.bottom, 60)
+                            } else {
+                                Button {
+                                    nextPage()
+                                } label: {
+                                    Text("Next")
+                                        .font(.title)
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.bottom, 60)
                             }
-                            .padding(.bottom, 60)
-                        } else {
-                            Button {
-                                nextPage()
-                            } label: {
-                                Text("Next")
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.bottom, 60)
                         }
-                    }
                 }
                 .tag(page.tag)//es un indicador de posición, los tag, se pone al final del vstack
             }
