@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-//MARK: - Vista reutilizable customizada
 struct CustomAlertView: View {
     let title: String
     let message: String
     let buttonText: String
-    let action: () -> Void//es un closure(sin implementación), al llamar a la prop se puede poner la que quieras, este no coge ni devuelve nada, le pones la implementación que necesites(mirar donde se llame al CustomAlertView)
+    let action: () -> Void
     
     var body: some View {
         VStack {

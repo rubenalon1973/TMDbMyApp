@@ -3,11 +3,10 @@
 //  TMDbMyApp
 //
 //  Created by Ruben Alonso on 17/8/23.
-    
+
 
 import Foundation
 
-//MARK: - Modelo del detalle de actor
 struct ActorDTO: Codable {
     let adult: Bool
     let alsoKnownAs: [String]
@@ -20,7 +19,7 @@ struct ActorDTO: Codable {
     let imdbID, knownForDepartment, name, placeOfBirth: String
     let popularity: Double
     let profilePath: String
-
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case alsoKnownAs = "also_known_as"

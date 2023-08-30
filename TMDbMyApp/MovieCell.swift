@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-//para elegir como se pinte
 enum CellType {
     case list
     case grid
 }
 
-//MARK: - View diseño de la cell
 struct MovieCell: View {
     let movie: Movie
     @State var listType: CellType
@@ -23,12 +21,11 @@ struct MovieCell: View {
         case .list:
             HStack {
                 MoviePosterView(movie: movie, size: .poster)
-                    .overlay(alignment: .bottomTrailing) {//lo contrario a background, es para poner elementos encima de una vista, en este caso abajo a la drcha
-                        MovieRankView(movie: movie)//ponemos el círculo de los votos
+                    .overlay(alignment: .bottomTrailing) {
+                        MovieRankView(movie: movie)
                     }
                 VStack(alignment: .leading){
                     Text(movie.title)
-    //                    .foregroundColor(.gray)
                         .font(.title2)
                         .bold()
                     Text("Year: \(movie.releaseYear)")
@@ -45,13 +42,6 @@ struct MovieCell: View {
                 }
         }
         
-//        MARK: También se puede poner en el NavigatiónLink
-//        .frame(maxWidth: 400)
-//        .background {
-//            RoundedRectangle(cornerRadius: 10)
-//                .fill(Color.white)
-//                .shadow(radius: 10)
-//        }
     }
 }
 

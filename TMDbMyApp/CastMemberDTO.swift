@@ -7,13 +7,11 @@
 
 import Foundation
 
-//MARK: Modelo del scroll de actores
 struct CreditResult: Codable {
     let id: Int
     let cast: [CastMemberDTO]
 }
 
-//para sacar el scroll horiz de los actores
 struct CastMemberDTO: Codable, Identifiable, Hashable {
     let id: Int
     let name: String

@@ -9,12 +9,9 @@ import Foundation
 
 final class ActorDetailVM: ObservableObject {
     let repository: MovieRepositoryProtocol
-//    MARK: - Resolver el tema del valor de asignación del selectedActor
-//    TODO: - Pasar el selectedActor a ? y mediante el castmember cargar la llamada de red
     @Published var selectedActor: Actor?
     @Published var errorMessage: String = ""
     var castMember: CastMember
-    
     
     init(repository: MovieRepositoryProtocol = MoviesRepository.shared, castMember: CastMember) {
         self.repository = repository
@@ -31,5 +28,4 @@ final class ActorDetailVM: ObservableObject {
             }
         }
     }
-    
 }

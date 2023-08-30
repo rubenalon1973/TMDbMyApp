@@ -51,12 +51,12 @@ struct ActorDetailView: View {
                         Text(actor.biography)
                             .foregroundColor(.gray)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)//esto ajusta el ancho del contenido en fx de su relleno, y lo alinea donde quieras
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 }
             }
         }
-        .padding(.bottom, 120)//para salvar toda la vista con el los tab de abajo de la vista principal
+        .padding(.bottom, 120)
         .ignoresSafeArea()
     }
 }

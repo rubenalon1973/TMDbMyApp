@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//este dataRequest nos va a devolver lo mismo q el URLSession si lo hubieramos hecho en la fx de getPopularMovies, y así dividimos las responsabilidades
+
 extension URLSession {
     func dataRequest(urlReq: URLRequest) async throws -> (Data, URLResponse) {
         do {
@@ -16,12 +16,11 @@ extension URLSession {
         }
     }
 }
-//para poder escalar luego el error a la 1ª capa al usuario
+
 enum NetworkError: Error {
     case urlRequesNotValid
     case general
     
-//    creamos errores en esta prop calculada con maq de estado
     var description: String {
         switch self {
         case .urlRequesNotValid:

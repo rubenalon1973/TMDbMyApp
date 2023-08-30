@@ -8,64 +8,44 @@
 import Foundation
 
 final class MovieRepositoryTest: MovieRepositoryProtocol {
-    
     let urlMovie = Bundle.main.url(forResource: "MovieTest", withExtension: "json")!
     let urlMember = Bundle.main.url(forResource: "CastMemberTest", withExtension: "json")!
     let urlActor = Bundle.main.url(forResource: "ActorTest", withExtension: "json")!
     
-    //    fx para tirar de datos locales de test para PopMovies
     func getPopMovies(page: Int = 1) async throws -> [Movie] {
-        //        creamos inst tb aquí para formatear la fecha del modelotest
-        print("entra por getpopmovies test")
-        
         let data = try Data(contentsOf: urlMovie)
-        print("entra por data test")
-        
         let decoder = JSONDecoder()
-        print("entra por decoder test")
-        
-        //        estrategia de decode de la fecha para darle formato deseado en preview
         decoder.dateDecodingStrategy = .formatted(.dateFormat)
         
-        return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }//con esta fx ext de movieDTO lo pasamos a nuestro mod movie
+        return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }
     }
-    //    fx para tirar de datos locales de test para CastMember en detailVies
+    
     func getCastMember(id: Int) async throws -> [CastMember] {
-        print("entra por getcast test")
-        
         let data = try Data(contentsOf: urlMember)
-        print("entra por data test")
-        
         let decoder = JSONDecoder()
-        print("entra por decoder test")
         
         return try decoder.decode(CreditResult.self, from: data).cast.map { $0.mapToModel() }
     }
     
     func getNowPlayingMovies(page: Int = 1) async throws -> [Movie] {
-        print("entra por getNowPlayingMovies test")
-        
         let data = try Data(contentsOf: urlMovie)
-        print("entra por data test")
-        
         let decoder = JSONDecoder()
-        print("entra por decoder test")
-        
-        //        estrategia de decode de la fecha para darle formato deseado en preview
         decoder.dateDecodingStrategy = .formatted(.dateFormat)
         
-        return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }//con esta fx ext de movieDTO lo pasamos a nuestro mod movie
+        return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }
     }
     
     func getTopRatedMovies(page: Int = 1) async throws -> [Movie] {
         let data = try Data(contentsOf: urlMovie)
         let decoder = JSONDecoder()
+        
         return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }
     }
     
     func getUpcomingMovies(page: Int) async throws -> [Movie] {
         let data = try Data(contentsOf: urlMovie)
         let decoder = JSONDecoder()
+        
         return try decoder.decode(MoviesResult.self, from: data).results.map { $0.mapToModel() }
     }
     
@@ -75,16 +55,14 @@ final class MovieRepositoryTest: MovieRepositoryProtocol {
         
         return try decoder.decode(ActorDTO.self, from: data).mapToModel()
     }
-    //    TODO: Acabar
     func getMoviesVideos(id: Int) async throws -> [MoviesVideos] {
         []
     }
-    //    TODO: Acabar
     func getWatchProviders(id: Int) async throws -> WatchProvidersResponse {
         WatchProvidersResponseDTO(id: 0, results: [:]).mapToModel()
     }
 }
-//creamos esta ext de moviesvm para poder elegir aquí la de test, y la creamos para no tener que poner todo en la preview y solo poner la prop de moviesvm preview, la creamos aqui para q no suba a produccion
+
 extension MoviesVM {
     static let previewMovie = MoviesVM(repository: MovieRepositoryTest())
 }
@@ -94,7 +72,6 @@ extension MovieDetailVM {
 }
 
 extension ActorDetailVM {
-    //    static let previewActor = ActorDetailVM(repository: MovieRepositoryTest(), selectedActor: .testActorDetail)
     static let previewCast = ActorDetailVM(repository: MovieRepositoryTest(), castMember: .testMember)
 }
 
@@ -107,7 +84,6 @@ extension Movie {
                                        voteAverage: 8.5,
                                        posterPath: "/gPbM0MK8CP8A174rmUwGsADNYKD.jpg")
 }
-//hemos formateado la fecha aquí directx cogiendo de helpers
 
 extension CastMember {
     static let testMember = CastMember(
@@ -130,8 +106,6 @@ extension Actor {
     
     static let emptyActor = Actor(biography: "", birthday: "", deathday: "", id: 12835, name: "", placeOfBirth: "", popularity: 0, profilePath: "")
 }
-
-
 
 extension CustomAlertView {
     static let testAlert = CustomAlertView(title: "Something Went Wrong", message: "Cannot Load Data", buttonText: "Try again", action: {})

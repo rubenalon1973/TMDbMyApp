@@ -7,17 +7,15 @@
 
 import Foundation
 
-
 struct PageModel: Identifiable {
-    let id = UUID()//cada vez q se cree un pageModel le dará un id
+    let id = UUID()
     let title: String
     let description: String
     let image: String
-    let tag: Int//permite al pager saber en q pag está, es un identificador
+    let tag: Int
 }
 
 extension PageModel {
-    
     static var pagesReal: [PageModel] =
     [
         PageModel(title: "Bienvenido a la magia del cine",
@@ -35,4 +33,3 @@ extension PageModel {
     ]
 }
 
-// TODO: Queda pdte tal vez hacer unos localized string aquí para las language

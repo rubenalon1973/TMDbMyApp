@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct ProvidersView: View {
     let titleSection: String
     let providerType: [WatchProviderItem]

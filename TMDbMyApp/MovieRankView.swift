@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-//MARK: - View para el círculo del porcentaje de votos
 
-//le damos dos opciones con el enum, para poder utilizarlo en dif views
 enum VoteRankViewSize {
     case small
     case large
@@ -23,9 +21,9 @@ struct MovieRankView: View {
     var body: some View {
         Text(movie.rank)
             .bold()
-            .font(size == .small ? .body : .title)//aquí cambia el tamaño en fx del case q se elija
+            .font(size == .small ? .body : .title)
             .foregroundColor(.black)
-            .padding(size == .small ? 6 : 15)//aquí cambia el tamaño en fx del case q se elija
+            .padding(size == .small ? 6 : 15)
             .background {
                 Circle()
                     .fill(Color(white: 0.9))
@@ -33,20 +31,20 @@ struct MovieRankView: View {
             .background {
                 Circle()
                     .trim(from: 0.0, to: progress ? (movie.voteAverage / 10) : 0)
-                    .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
+                    .stroke(lineWidth: size == .small ? 6 : 10)
                     .fill(movie.voteAverage > 8 ? Color.green : Color.red)
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut(duration: 2), value: progress)
             }
             .background {
                 Circle()
-                    .stroke(lineWidth: size == .small ? 6 : 10)//aquí cambia el tamaño en fx del case q se elija
+                    .stroke(lineWidth: size == .small ? 6 : 10)
                     .fill(Color.gray)
             }
             .onAppear {
                 progress = true
             }
-            .offset(x: 5, y: 5)//ubicación en esta vista, q es dónde se ubicará donde lo sobrepongamos
+            .offset(x: 5, y: 5)
     }
 }
 

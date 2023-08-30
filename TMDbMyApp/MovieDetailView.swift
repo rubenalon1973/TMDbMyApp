@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//MARK: - Vista detalle para las movie
 struct MovieDetailView: View {
     @ObservedObject var vm: MovieDetailVM
     @State var showProviders = false
@@ -25,7 +24,6 @@ struct MovieDetailView: View {
                             .font(.system(size: 30))
                             .padding(0.5)
                         Text("\(vm.selectedMovie.rank)/10")
-                        
                     }
                 }
                 .padding()
@@ -44,14 +42,13 @@ struct MovieDetailView: View {
                         .fill(.blue)
                         .shadow(radius: 8, y: 10))
                     
-                    //MARK: Para ver en que plataformas está
                     Button(action: {
                         showProviders.toggle()
                     }, label: {
                         Image(systemName: "tv.circle.fill")
-                        Text(vm.checkEmptyProviders() ? "No providers" : "Just watch" )//ternario para cambiar textos
+                        Text(vm.checkEmptyProviders() ? "No providers" : "Just watch" )
                     })
-                    .disabled(vm.checkEmptyProviders())//desactiva boton si no hay providers
+                    .disabled(vm.checkEmptyProviders())
                     .foregroundColor(.white)
                     .padding()
                     .padding(.horizontal)
@@ -124,7 +121,6 @@ struct MovieDetailView: View {
                 .frame(height: 95)
         })
         .ignoresSafeArea()
-        
         .sheet(isPresented: $showTrailer, content: {
             if let trailer = vm.oneTrailer,
                let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
@@ -137,10 +133,9 @@ struct MovieDetailView: View {
                 ProvidersView(titleSection: "Rent", providerType: vm.rentProviders)
                 ProvidersView(titleSection: "Flat rate", providerType: vm.flatRateProviders)
             }
-//            propiedades para el .sheet de diseño
             .frame(maxWidth: .infinity)
-            .presentationDetents([.medium, .large])//puedes estirar desde la mitad hacia arriba
-            .presentationBackground(.thinMaterial)//fondo con opacidad
+            .presentationDetents([.medium, .large])
+            .presentationBackground(.thinMaterial)
             .presentationCornerRadius(70)
             .padding()
         })
@@ -149,7 +144,7 @@ struct MovieDetailView: View {
         }
     }
 }
-//MARK: Los constructores de las vistas pedirán en su inicialización las prop no inicializadas q contenga el struct dentro
+
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {

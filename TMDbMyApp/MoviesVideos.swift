@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct MoviesVideos {
     let key: String
     let type: String

@@ -12,19 +12,17 @@ enum posterSize: CGFloat {
     case cover = 400
     case grid = 160
 }
-//MARK: - View para diseño del poster
 struct MoviePosterView: View {
     let movie: Movie
-    var size: posterSize 
+    var size: posterSize
     
     var body: some View {
-        //        AsyncImage hace el foreach utilizando la fx extensión de URL en capa de config de llamadas
         VStack {
             AsyncImage(url: .getPosterPath(poster: movie.posterPath)) { image in
                 image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: size.rawValue)//luego al llamarlo pondremos en la vista q sea el tamaño q queramos
+                    .frame(width: size.rawValue)
                     .cornerRadius(8)
             } placeholder: {
                 Image(systemName: "star")
@@ -35,12 +33,10 @@ struct MoviePosterView: View {
             }
         }
     }
-
 }
 
 struct MoviePosterView_Previews: PreviewProvider {
     static var previews: some View {
-        //        le damos el testMovie a la preview
         MoviePosterView(movie: .testMovieDetail, size: .cover)
     }
 }

@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-//Modelo general, donde dentro está el detalle de Movie, cdo veamos { al inicio, es ya un objeto, un struct
 struct MoviesResult: Codable {
     let page: Int
     let totalPages: Int
@@ -16,19 +14,18 @@ struct MoviesResult: Codable {
     let results: [MovieDTO]
     
     enum CodingKeys: String, CodingKey {
-        case page, results //un case con dos case sep x coma
+        case page, results
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
 }
-//MARK: "DTO" Domain Transfer Object: Modelo de API
-//cogemos lo que nos interesa, los q vamos a utilizar
+
 struct MovieDTO: Codable {
     let id: Int
     let title: String
     let originalTitle: String
     let overview: String
-    let releaseDate: Date//lo pasaremos de String a formato fecha
+    let releaseDate: Date
     let voteAverage: Double
     let posterPath: String
     
@@ -57,8 +54,6 @@ extension MoviesVideosDTO {
     }
 }
 
-
-//fx para mapear a nuestro modelo, en Movie en la fx los parámetros son de DTO
 extension MovieDTO {
     func mapToModel() -> Movie {
         Movie(id: id,title: title, originalTitle: originalTitle, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, posterPath: posterPath)

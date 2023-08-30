@@ -12,6 +12,7 @@ struct MoviesHomeView: View {
     @ObservedObject var nowPlayVM = MoviesVM(movieType: .nowPlay)
     @ObservedObject var topRatedVM = MoviesVM(movieType: .topRated)
     @ObservedObject var upcomingVM = MoviesVM(movieType: .upcoming)
+    
     var body: some View {
         TabView {
             MoviesView(vm: popVM)
@@ -31,7 +32,7 @@ struct MoviesHomeView: View {
                     Label("Upcoming", systemImage: "calendar")
                 }
         }
-        .tint(.blue)//cambia color de iconos del tab, grid y title en navegación
+        .tint(.blue)
     }
 }
 

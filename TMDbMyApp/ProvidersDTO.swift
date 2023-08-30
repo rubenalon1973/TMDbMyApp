@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct WatchProvidersResponseDTO: Codable {
     let id: Int
     let results: [String: WatchProviderDTO]
@@ -44,7 +43,7 @@ extension WatchProviderDTO {
                       flatrate: flatrate?.map({ providerItem in
             providerItem.mapToModel()
         }),
-                      rent: rent?.map{ $0.mapToModel() }, //es lo mismo que la anterior, + inferido
+                      rent: rent?.map{ $0.mapToModel() },
                       buy: buy?.map { $0.mapToModel() })
     }
 }

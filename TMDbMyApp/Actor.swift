@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Actor: Codable, Hashable {
     let biography: String
     let birthday: String

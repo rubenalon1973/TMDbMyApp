@@ -23,7 +23,6 @@ struct PageView: View {
                 .clipped()
                 .ignoresSafeArea()
             
-            // Fondo semi-transparente
             Color.black
                 .opacity(0.2)
             
