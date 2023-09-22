@@ -2,4 +2,4 @@
 practice with SwiftUI
 
 ![](AppPreviewImages/WellcomeScreen.gif)
-![](AppPreviewImages/WellcomeScreen_image.jpg)
+![](AppPreviewImages/WellcomeScreen_image.png)
