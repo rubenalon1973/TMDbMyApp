@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Codable,Identifiable, Hashable {
+struct Movie: Identifiable, Hashable {
     let id: Int
     let title: String
     let originalTitle: String
@@ -23,4 +23,10 @@ struct Movie: Codable,Identifiable, Hashable {
     var releaseYear: String {
         releaseDate.formatted(.dateTime.year(.defaultDigits))
     }
+}
+
+struct MoviesVideos {
+    let key: String
+    let type: VideoType
+    let official: Bool
 }

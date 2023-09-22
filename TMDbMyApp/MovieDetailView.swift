@@ -125,6 +125,10 @@ struct MovieDetailView: View {
             if let trailer = vm.oneTrailer,
                let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
                 YouTubePlayer(url: url)
+            } else {
+                CustomAlertView(title: "Trailer is not available", message: "Sorry", buttonText: "Go back") {
+                    showTrailer.toggle()
+                }
             }
         })
         .sheet(isPresented: $showProviders, content: {

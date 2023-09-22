@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PageView: View {
     let page: PageModel
-    @State var offsetY = CGFloat.zero
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -20,7 +19,6 @@ struct PageView: View {
                        maxWidth: .infinity,
                        minHeight: 0,
                        maxHeight: .infinity)
-                .clipped()
                 .ignoresSafeArea()
             
             Color.black

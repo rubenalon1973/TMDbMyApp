@@ -30,6 +30,7 @@ final class MoviesRepository: MovieRepositoryProtocol {
     }
     
     func getCastMember(id: Int) async throws -> [CastMember] {
+        
         try await getJSON(urlRequest: .movieCastRequest(url: .getMovieCast(id: id)), type: CreditResult.self).cast.map{ $0.mapToModel()
         }
     }

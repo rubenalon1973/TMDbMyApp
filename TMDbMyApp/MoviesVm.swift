@@ -52,14 +52,15 @@ final class MoviesVM: ObservableObject {
     init(movieType: GetMoviesType = .popular, repository: MovieRepositoryProtocol = MoviesRepository.shared) {
         self.repository = repository
         self.moviesType = movieType
-        loadMovies()
+        Task {
+           await loadMovies()
+        }
     }
     
-    func loadMovies() {
-        Task { @MainActor in
+    @MainActor
+    func loadMovies() async {
             do {
                 switch moviesType {
-                    
                 case .popular:
                     movies += try await repository.getPopMovies(page: page)
                     isLoading = false
@@ -83,13 +84,14 @@ final class MoviesVM: ObservableObject {
                 movies = []
                 isLoading = false
             }
-        }
     }
     
     func loadNextPage(movie: Movie) {
         if isLastItem(movie: movie) {
             page += 1
-            loadMovies()
+            Task {
+              await loadMovies()
+            }
         }
     }
     

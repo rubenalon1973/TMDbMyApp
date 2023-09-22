@@ -16,7 +16,7 @@ final class MovieDetailVM: ObservableObject {
     @Published var providers: WatchProvidersResponse?
     
     var oneTrailer: MoviesVideos? {
-        trailers.filter{ $0.type == "Trailer" && $0.official == true }.first
+        trailers.filter{ $0.type == .trailer && $0.official == true }.first
     }
     
     var buyProviders: [WatchProviderItem] {

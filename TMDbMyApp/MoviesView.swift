@@ -22,8 +22,11 @@ struct MoviesView: View {
                 }
             case .error:
                 CustomAlertView(title: "Something went wrong", message: "Cannot load data", buttonText: "Try again") {
-                    vm.loadMovies()
+                    Task {
+                      await vm.loadMovies()
+                    }
                 }
+                    
             }
         }
         .overlay {

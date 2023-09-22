@@ -44,14 +44,16 @@ struct MoviesVideosResultsDTO: Codable {
 
 struct MoviesVideosDTO: Codable {
     let key: String
-    let type: String
+    let type: VideoType
     let official: Bool
 }
 
-extension MoviesVideosDTO {
-    func mapToModel() -> MoviesVideos {
-        MoviesVideos(key: key, type: type, official: official)
-    }
+enum VideoType: String, Codable {
+    case behindTheScenes = "Behind the Scenes"
+    case clip = "Clip"
+    case featurette = "Featurette"
+    case teaser = "Teaser"
+    case trailer = "Trailer"
 }
 
 extension MovieDTO {
@@ -60,3 +62,8 @@ extension MovieDTO {
     }
 }
 
+extension MoviesVideosDTO {
+    func mapToModel() -> MoviesVideos {
+        MoviesVideos(key: key, type: type, official: official)
+    }
+}
