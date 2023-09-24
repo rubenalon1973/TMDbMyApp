@@ -12,9 +12,8 @@ let imageURLBase = URL(string: "https://image.tmdb.org/t/p/w500")!
 let linkURLBase = URL(string: "https://www.themoviedb.org/movie/")!
 let profilePathURLBase = URL(string: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/")!
 
-//TODO: Ocultar
-let token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzI2YmU1ZWM5NDQ0ZjM5YTMwZjI1ZTY4YWQ3NWVkYSIsInN1YiI6IjY0YjdmMGYzZDM5OWU2MDBhZDQ0YmQ1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S2e2kr8N4Q8bhOlle2AQU0NsQ6AEZ9iaBPA090nxdPo"
-//let token = "Enter your token" //Readme: Esta app requiere un token de la API de TMDb
+//MARK: Esta app requiere un token de la API de TMDb
+let token = "Enter your token"
 
 extension URL {
     static let getPopMovies = mainURL.appending(path: "movie/popular")
