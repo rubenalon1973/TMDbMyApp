@@ -1,15 +1,6 @@
-
-
-
-
-
-
-
-
 # TMDbMyApp
 
-![TMDbMyApp Logo](AppPreviewImages/apIcon_movie.png)
-<img src="AppPreviewImages/apIcon_movie.png" alt="apIcon" width="200" height="400">
+<img src="AppPreviewImages/apIcon_movie.png" alt="apIcon" width="200" height="200">
 
 ## Descripción
 TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos en SwiftUI adquiridos durante un reciente bootcamp. Esta aplicación utiliza la API The Movie Database (TMDb) para proporcionar información actualizada sobre películas y actores, incluyendo detalles de estrenos, valoraciones y la disponibilidad en diferentes plataformas de TV, ya sea de pago o suscripción.
@@ -18,6 +9,14 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 
 ![](AppPreviewImages/WellcomeScreen.gif)
 ![](AppPreviewImages/Gif1.gif)
+![](AppPreviewImages/Gif2.gif)
+![](AppPreviewImages/Gif3.gif)
+![](AppPreviewImages/Gif4.gif)
+![](AppPreviewImages/Gif5.gif)
+
+
+
+
 <img src="AppPreviewImages/WellcomeScreen_image.png" alt="WellcomeScreen" width="29%">
 
 
