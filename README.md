@@ -19,23 +19,10 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 
 |   |   |   |   |
 |---|---|---|---|
-| ![Captura1](AppPreviewImages/WellcomeScreen_image.png) | ![Captura1](AppPreviewImages/Captura1.png) | ![Captura2](AppPreviewImages/Captura2.png) | ![Captura3](AppPreviewImages/Captura3.png) |
+| ![WellcomeScreen_image](AppPreviewImages/WellcomeScreen_image.png) | ![WellcomeScreen_image2](AppPreviewImages/WellcomeScreen_image2.png) | ![WellcomeScreen_image3](AppPreviewImages/WellcomeScreen_image3.png) | ![Captura2](AppPreviewImages/Captura2.png) |
 | ![Captura4](AppPreviewImages/Captura4.png) | ![Captura5](AppPreviewImages/Captura5.png) | ![Captura6](AppPreviewImages/Captura6.png) | ![Captura7](AppPreviewImages/Captura7.png) |
-| ![Captura8](AppPreviewImages/Captura8.png) |   |   |   |
+| ![Captura8](AppPreviewImages/Captura8.png) | ![Captura1](AppPreviewImages/Captura1.png)  | ![Captura1](AppPreviewImages/Captura2.png)  | ![Captura1](AppPreviewImages/Captura9.png)  |
 
-
-
-
-
-<img src="AppPreviewImages/WellcomeScreen_image.png" alt="Captura1" width="20%">
-<img src="AppPreviewImages/Captura1.png" alt="Captura1" width="20%">
-<img src="AppPreviewImages/Captura2.png" alt="Captura2" width="20%">
-<img src="AppPreviewImages/Captura3.png" alt="Captura3" width="20%">
-<img src="AppPreviewImages/Captura4.png" alt="Captura4" width="20%">
-<img src="AppPreviewImages/Captura5.png" alt="Captura5" width="20%">
-<img src="AppPreviewImages/Captura6.png" alt="Captura6" width="20%">
-<img src="AppPreviewImages/Captura7.png" alt="Captura7" width="20%">
-<img src="AppPreviewImages/Captura8.png" alt="Captura8" width="20%">
 
 
 ## Características Principales
