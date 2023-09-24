@@ -17,7 +17,7 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 ## Capturas de Pantalla
 
 ![](AppPreviewImages/WellcomeScreen.gif)
-![](AppPreviewImages/WellcomeScreen2.gif)
+![](AppPreviewImages/Gif1.gif)
 <img src="AppPreviewImages/WellcomeScreen_image.png" alt="WellcomeScreen" width="29%">
 
 
