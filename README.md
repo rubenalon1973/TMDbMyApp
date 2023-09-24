@@ -15,6 +15,13 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 |--------------|--------------|---------------------|
 | ![Actor detail](AppPreviewImages/Gif3.gif) | ![Trailer link](AppPreviewImages/Gif4.gif) | ![Reproductor trailer](AppPreviewImages/Gif5.gif) |
 
+|   |   |   |   |
+|---|---|---|---|
+| ![Captura1](AppPreviewImages/WellcomeScreen_image.png) | ![Captura1](AppPreviewImages/Captura1.png) | ![Captura2](AppPreviewImages/Captura2.png) | ![Captura3](AppPreviewImages/Captura3.png) |
+| ![Captura4](AppPreviewImages/Captura4.png) | ![Captura5](AppPreviewImages/Captura5.png) | ![Captura6](AppPreviewImages/Captura6.png) | ![Captura7](AppPreviewImages/Captura7.png) |
+| ![Captura8](AppPreviewImages/Captura8.png) |   |   |   |
+
+
 
 
 
