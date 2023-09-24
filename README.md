@@ -44,7 +44,5 @@ Para ejecutar esta aplicación, necesitas obtener un token de la API TMDb y prop
 ## Estado del Proyecto
 TMDbMyApp se encuentra en una fase inicial y está en constante desarrollo. A medida que amplíe conocimientos y habilidades, se irán implementando nuevas características, pruebas y mejoras en el proyecto.
 
-## Agradecimientos
-Quiero expresar mi agradecimiento en especial a Alberto Alegre Bravo (Bitos88) por su apoyo incondicional en este proyecto y tantos otros, y a mi excepcional profesor del bootcamp Julio César Fernández de Apple Coding Academy.
 
 
