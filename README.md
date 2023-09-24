@@ -5,7 +5,7 @@
 ## Descripción
 TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos en SwiftUI adquiridos durante un reciente bootcamp. Esta aplicación utiliza la API The Movie Database (TMDb) para proporcionar información actualizada sobre películas y actores, incluyendo detalles de estrenos, valoraciones y la disponibilidad en diferentes plataformas de TV, ya sea de pago o suscripción.
 
-## Capturas de Pantalla
+## Gifs
 
 | Wellcome Screen | Movie detail | ScrollView horizontal actors |
 |-----------------|--------------|------------------------------|
@@ -15,6 +15,7 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 |--------------|--------------|---------------------|
 | ![Actor detail](AppPreviewImages/Gif3.gif) | ![Trailer link](AppPreviewImages/Gif4.gif) | ![Reproductor trailer](AppPreviewImages/Gif5.gif) |
 
+## Capturas de Pantalla
 
 
 |   |   |   |   |
