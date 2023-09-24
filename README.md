@@ -7,18 +7,26 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 
 ## Capturas de Pantalla
 
-![](AppPreviewImages/WellcomeScreen.gif)
-![](AppPreviewImages/Gif1.gif)
-![](AppPreviewImages/Gif2.gif)
-![](AppPreviewImages/Gif3.gif)
-![](AppPreviewImages/Gif4.gif)
-![](AppPreviewImages/Gif5.gif)
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 600px; margin: 0 auto;">
+  <img src="AppPreviewImages/WellcomeScreen.gif" width="200">
+  <img src="AppPreviewImages/Gif1.gif" width="200">
+  <img src="AppPreviewImages/Gif2.gif" width="200">
+  <img src="AppPreviewImages/Gif3.gif" width="200">
+  <img src="AppPreviewImages/Gif4.gif" width="200">
+  <img src="AppPreviewImages/Gif5.gif" width="200">
+</div>
 
 
 
-
-<img src="AppPreviewImages/WellcomeScreen_image.png" alt="WellcomeScreen" width="29%">
-
+<img src="AppPreviewImages/WellcomeScreen_image.png" alt="Captura1" width="20%">
+<img src="AppPreviewImages/Captura1.png" alt="Captura1" width="20%">
+<img src="AppPreviewImages/Captura2.png" alt="Captura2" width="20%">
+<img src="AppPreviewImages/Captura3.png" alt="Captura3" width="20%">
+<img src="AppPreviewImages/Captura4.png" alt="Captura4" width="20%">
+<img src="AppPreviewImages/Captura5.png" alt="Captura5" width="20%">
+<img src="AppPreviewImages/Captura6.png" alt="Captura6" width="20%">
+<img src="AppPreviewImages/Captura7.png" alt="Captura7" width="20%">
+<img src="AppPreviewImages/Captura8.png" alt="Captura8" width="20%">
 
 
 ## Características Principales
