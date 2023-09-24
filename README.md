@@ -7,14 +7,14 @@ TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos e
 
 ## Capturas de Pantalla
 
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 600px; margin: 0 auto;">
-  <img src="AppPreviewImages/WellcomeScreen.gif" width="200">
-  <img src="AppPreviewImages/Gif1.gif" width="200">
-  <img src="AppPreviewImages/Gif2.gif" width="200">
-  <img src="AppPreviewImages/Gif3.gif" width="200">
-  <img src="AppPreviewImages/Gif4.gif" width="200">
-  <img src="AppPreviewImages/Gif5.gif" width="200">
-</div>
+| Wellcome Screen | Movie detail | ScrollView horizontal actors |
+|-----------------|--------------|------------------------------|
+| ![Wellcome Screen](AppPreviewImages/WellcomeScreen.gif) | ![Movie detail](AppPreviewImages/Gif1.gif) | ![ScrollView horizontal actors](AppPreviewImages/Gif2.gif) |
+
+| Actor detail | Trailer link | Reproductor trailer |
+|--------------|--------------|---------------------|
+| ![Actor detail](AppPreviewImages/Gif3.gif) | ![Trailer link](AppPreviewImages/Gif4.gif) | ![Reproductor trailer](AppPreviewImages/Gif5.gif) |
+
 
 
 
