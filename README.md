@@ -1,24 +1,28 @@
-
-
-
-
-
-
-
-
 # TMDbMyApp
 
-![TMDbMyApp Logo](AppPreviewImages/apIcon_movie.png)
-<img src="AppPreviewImages/apIcon_movie.png" alt="apIcon" width="200" height="400">
+<img src="AppPreviewImages/apIcon_movie.png" alt="apIcon" width="200" height="200">
 
 ## Descripción
 TMDbMyApp es un proyecto de práctica diseñado para aplicar los conocimientos en SwiftUI adquiridos durante un reciente bootcamp. Esta aplicación utiliza la API The Movie Database (TMDb) para proporcionar información actualizada sobre películas y actores, incluyendo detalles de estrenos, valoraciones y la disponibilidad en diferentes plataformas de TV, ya sea de pago o suscripción.
 
+## Gifs
+
+| Wellcome Screen | Movie detail | ScrollView horizontal actors |
+|-----------------|--------------|------------------------------|
+| ![Wellcome Screen](AppPreviewImages/WellcomeScreen.gif) | ![Movie detail](AppPreviewImages/Gif1.gif) | ![ScrollView horizontal actors](AppPreviewImages/Gif2.gif) |
+
+| Actor detail | Trailer link | Reproductor trailer |
+|--------------|--------------|---------------------|
+| ![Actor detail](AppPreviewImages/Gif3.gif) | ![Trailer link](AppPreviewImages/Gif4.gif) | ![Reproductor trailer](AppPreviewImages/Gif5.gif) |
+
 ## Capturas de Pantalla
 
-![](AppPreviewImages/WellcomeScreen.gif)
-![](AppPreviewImages/Gif1.gif)
-<img src="AppPreviewImages/WellcomeScreen_image.png" alt="WellcomeScreen" width="29%">
+
+|   |   |   |   |
+|---|---|---|---|
+| ![WellcomeScreen_image](AppPreviewImages/WellcomeScreen_image.png) | ![WellcomeScreen_image2](AppPreviewImages/WellcomeScreen_image2.png) | ![WellcomeScreen_image3](AppPreviewImages/WellcomeScreen_image3.png) | ![Captura2](AppPreviewImages/Captura2.png) |
+| ![Captura4](AppPreviewImages/Captura4.png) | ![Captura5](AppPreviewImages/Captura5.png) | ![Captura6](AppPreviewImages/Captura6.png) | ![Captura7](AppPreviewImages/Captura7.png) |
+| ![Captura8](AppPreviewImages/Captura8.png) | ![Captura1](AppPreviewImages/Captura1.png)  | ![Captura1](AppPreviewImages/Captura2.png)  | ![Captura1](AppPreviewImages/Captura9.png)  |
 
 
 
@@ -40,7 +44,5 @@ Para ejecutar esta aplicación, necesitas obtener un token de la API TMDb y prop
 ## Estado del Proyecto
 TMDbMyApp se encuentra en una fase inicial y está en constante desarrollo. A medida que amplíe conocimientos y habilidades, se irán implementando nuevas características, pruebas y mejoras en el proyecto.
 
-## Agradecimientos
-Quiero expresar mi agradecimiento en especial a Alberto Alegre Bravo (Bitos88) por su apoyo incondicional en este proyecto y tantos otros, y a mi excepcional profesor del bootcamp Julio César Fernández de Apple Coding Academy.
 
 
